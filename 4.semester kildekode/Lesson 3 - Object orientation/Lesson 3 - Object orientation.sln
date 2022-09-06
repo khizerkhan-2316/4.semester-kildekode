@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson 3 - Object orientation", "Lesson 3 - Object orientation\Lesson 3 - Object orientation.csproj", "{65FDE93F-4E03-484A-8051-D79BB79EFE29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise 3.2", "Exercise 3.2\Exercise 3.2.csproj", "{CAD4C296-BCCF-4279-A561-C0C9E1CBE4FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise 3.8", "Exercise 3.8\Exercise 3.8.csproj", "{492C7B93-DCB2-4918-8A05-5B78987C0B4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65FDE93F-4E03-484A-8051-D79BB79EFE29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65FDE93F-4E03-484A-8051-D79BB79EFE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65FDE93F-4E03-484A-8051-D79BB79EFE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65FDE93F-4E03-484A-8051-D79BB79EFE29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAD4C296-BCCF-4279-A561-C0C9E1CBE4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAD4C296-BCCF-4279-A561-C0C9E1CBE4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAD4C296-BCCF-4279-A561-C0C9E1CBE4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAD4C296-BCCF-4279-A561-C0C9E1CBE4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{492C7B93-DCB2-4918-8A05-5B78987C0B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492C7B93-DCB2-4918-8A05-5B78987C0B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492C7B93-DCB2-4918-8A05-5B78987C0B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492C7B93-DCB2-4918-8A05-5B78987C0B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B906669-C564-4A0F-A247-FF44788C0010}
+	EndGlobalSection
+EndGlobal
