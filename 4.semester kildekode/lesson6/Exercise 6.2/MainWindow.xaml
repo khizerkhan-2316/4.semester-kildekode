@@ -1,0 +1,26 @@
+﻿<Window x:Class="Exercise_6._2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Exercise_6._2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="MainContainer">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label1top" Content="Batman" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.605,0.733"/>
+        <Label x:Name="label1bottom" Content="HULK" HorizontalAlignment="Left" Margin="114,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+        <Label x:Name="label2top" Grid.Column="2" Content="Robin" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label x:Name="label2bottom" Grid.Column="2" Content="Fantomet" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+        <Button x:Name="button1" Grid.Column="1" Content="Ombyt øverste&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Click="button1_Click"/>
+        <Button x:Name="button2" Grid.Column="1" Content="Ombyt nederste" HorizontalAlignment="Left" Margin="115,109,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.125,0.508" Click="button2_Click"/>
+    </Grid>
+</Window>

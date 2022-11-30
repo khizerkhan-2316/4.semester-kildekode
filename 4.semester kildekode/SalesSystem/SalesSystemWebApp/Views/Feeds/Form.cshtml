@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Feed oprettelse";
+}
+
+@model SalesSystemWebApp.ViewModels.FeedsViewModel
+
+
+@Html.Partial("_PageHeading", "Opret nyt feed")
+
+
+
+<form>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Feed.Title)
+        @Html.EditorFor(model => model.Feed.Title, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Feed.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Feed.Description)
+        @Html.EditorFor(model => model.Feed.Description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Feed.Description, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Feed.Format)
+        @Html.DropDownListFor(model => model.Feed.Format, new SelectList(Model.Formats, "Value", "Text"), "---Vælg Format---", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Feed.Format, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Feed.Limit)
+        @Html.EditorFor(model => model.Feed.Limit, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Feed.Limit, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Feed.link)
+        @Html.EditorFor(model => model.Feed.link, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Feed.link, "", new { @class = "text-danger" })
+    </div>
+
+
+    <label>Vælg attributter som skal inkluderes i feedet</label>
+    <div class="properties-wrapper d-flex">
+        @foreach (var property in Model.Product.GetType().GetProperties())
+        {
+            <div class="form-group pl-2">
+                @Html.CheckBox(property.ToString())
+                @Html.DisplayFor(model => property.Name)
+
+            </div>
+
+        }
+    </div>
+
+    <label>Vælg de kategorier som du vil have produkter skal medtages for</label>
+    <div class="categories-wrapper d-flex">
+
+        @foreach (DataTransferObjects.Models.CategoryDto category in Model.Categories)
+        {
+            <div class="form-group pl-2">
+
+                @Html.CheckBox(category.CategoryId.ToString())
+                @Html.DisplayFor(model => category.Name)
+            </div>
+        }
+    </div>
+
+
+
+</form>
+
+
+@Html.ActionLink("Tilbage", "Index", null, new { @class = "btn btn-primary" })
+
+
+
+
+@section Scripts {
+  
+    @Scripts.Render("~/bundles/jqueryval")
+}  

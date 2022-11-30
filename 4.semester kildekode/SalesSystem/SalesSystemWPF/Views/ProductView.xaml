@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="SalesSystem.Views.ProductView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesSystem.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="520" d:DesignWidth="1080">
+    <Grid Background="#202C37">
+        <TextBlock Foreground="#FFF" Margin="10, 0, 0, 0" Text="Produkter" FontSize="36"></TextBlock>
+        <ListBox Background="#2B3945" x:Name="ProductListBox" Margin="10,64,615,145" SelectionChanged="ProductListBox_SelectionChanged" Foreground="White" SelectedIndex="0">
+        </ListBox>
+        <Label Content="Navn:" HorizontalAlignment="Left" Margin="488,77,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White"/>
+        <Label Content="Beskrivelse" HorizontalAlignment="Left" Margin="489,129,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White"/>
+        <Label Content="Pris" HorizontalAlignment="Left" Margin="489,188,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White"/>
+        <Label Content="Salgspris" HorizontalAlignment="Left"  Margin="489,238,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.185,0.511" FontSize="16" Foreground="White"/>
+        <TextBlock x:Name="NameTextBlock" HorizontalAlignment="Left" Margin="634,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="384" Foreground="White"/>
+        <TextBlock x:Name="DescriptionTextBlock" HorizontalAlignment="Left" Margin="634,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="398" Foreground="White"/>
+        <TextBlock x:Name="PriceTextBlock" HorizontalAlignment="Left"  Margin="634,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="16" Width="292"/>
+        <TextBlock x:Name="SalePriceTextBlock" HorizontalAlignment="Left" Margin="634,246,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Foreground="White" Height="13" Width="332"/>
+        <Button x:Name="CreateProductButton" Content="Opret Produkt" Padding="30, 15, 30, 15"  HorizontalAlignment="Left" Margin="113,449,0,0" VerticalAlignment="Top" Background="#FF2B3945" Foreground="White" Click="CreateProductButton_Click"/>
+        <Button x:Name="UpdateProductButton" Content="Opdatere Produkt" Padding="30, 15, 30, 15" HorizontalAlignment="Left" Margin="507,449,0,0" VerticalAlignment="Top"  Background="#FF2B3945" Foreground="White" RenderTransformOrigin="0.58,0.067" Click="UpdateProductButton_Click"/>
+        <Button x:Name="DeleteProductButton" Content="Slet produkt" HorizontalAlignment="Left" Margin="891,449,0,0" VerticalAlignment="Top" Padding="30, 15, 30, 15"  Background="#FF2B3945" Foreground="White" Click="DeleteProductButton_Click" />
+        <Label Content="Kategori" HorizontalAlignment="Left" Margin="489,289,0,0" VerticalAlignment="Top"  FontSize="16" Foreground="White"/>
+        <TextBlock x:Name="CategoryTextBlock" HorizontalAlignment="Left" Margin="634,300,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Foreground="White" Height="13" Width="332"/>
+
+
+
+    </Grid>
+</UserControl>

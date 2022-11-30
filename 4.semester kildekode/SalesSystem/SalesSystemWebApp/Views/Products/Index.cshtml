@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Products";
+}
+
+@model SalesSystemWebApp.ViewModels.ProductsViewModel
+
+
+@helper SearchResultMessage(string message)
+{
+
+    if (Model.Products.Count == 0)
+    {
+        <h2>Ingen resultater på din søgning.</h2>
+    }
+
+}
+
+
+@Html.Partial("_PageHeading", "Administrere Produkter")
+
+@Html.ActionLink("Opret Produkt", "Create", null, new { @class = "btn btn-primary" })
+
+@Html.Partial("_SearchComponent", Model)
+
+<table style="margin-top: 20px;" class="table table-bordered">
+
+    @Html.Partial("_TableHeader", new List<string> { "Billede", "Navn", "Beskrivelse", "Pris", "Salgspris", "Kategori", "Opdatere", "Slet" })
+
+    @foreach (DataTransferObjects.Models.ProductDetailDto product in Model.Products)
+    {
+
+        @Html.Partial("_Product", product)
+
+    }
+
+</table>
+
+@SearchResultMessage("Ingen resultater til din søgning..")
+
+
+<h5 style="margin-top: 20px;">Antal produkter: @Model.Products.Count</h5>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#Product_Category_CategoryId").change(function (evt) {
+
+                var text = $("#Product_Category_CategoryId option:selected").text();
+
+                $("#Product_Category_Name").val(text);
+
+
+
+            })
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}  

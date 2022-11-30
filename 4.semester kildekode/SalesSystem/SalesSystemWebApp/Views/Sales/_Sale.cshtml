@@ -1,0 +1,14 @@
+﻿@model DataTransferObjects.Models.SaleDto
+
+
+<tr style="margin-top: 100px;">
+    <td>@Html.DisplayFor(Model => Model.SaleId)</td>
+    <td>@Html.DisplayFor(Model => Model.TotalPrice)</td>
+    <td>
+        @Html.ActionLink("Se mere", "Details", "Sales", new { id = Model.SaleId }, new { @class = "btn btn-primary" })
+    </td>
+
+    <td>
+        @Html.ActionLink("Slet salg", "Delete", "Sales", new { id = Model.SaleId }, new { @class = "btn btn-danger" })
+    </td>
+</tr>

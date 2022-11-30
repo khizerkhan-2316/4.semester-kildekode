@@ -1,0 +1,34 @@
+﻿
+@using DataTransferObjects.Models
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+
+@model SalesSystemWebApp.ViewModels.CategoriesViewModel
+
+@Html.Partial("_PageHeading", "Administere Kategorier")
+
+@helper RenderCategoryRow(CategoryDto category)
+{
+
+
+}
+
+@Html.ActionLink("Opret Kategori", "Create", null, new { @class = "btn btn-primary" })
+
+
+<table style="margin-top: 20px;" class="table table-bordered">
+
+    @Html.Partial("_TableHeader", new List<string> { "Kategori navn", "Detajler", "Opdatere", "Slet" })
+
+    @foreach (CategoryDto category in Model.Categories)
+    {
+        @Html.Partial("_Category", category)
+    }
+
+</table>
+
+<p class="text-danger">@Model.ErrorMessage</p>
+<h5 style="margin-top: 20px;">Antal Kategorier: @Model.Categories.Count</h5>

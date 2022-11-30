@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="SalesSystem.Views.SaleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesSystem.Views"
+             mc:Ignorable="d" 
+              d:DesignHeight="520" d:DesignWidth="1080">
+    <Grid Background="#202C37">
+        <TextBlock Foreground="#FFF" Margin="10,0,860,466" Text="Salg" FontSize="36"></TextBlock>
+        <TextBlock Foreground="#FFF" Margin="10,233,858,233" Text="Salgslinjer" FontSize="36"></TextBlock>
+        <ListBox Background="#2B3745" x:Name="SaleListBox" Margin="10,64,720,321" Foreground="White" SelectedIndex="0" SelectionChanged="SaleListBox_SelectionChanged"/>
+        <ListBox Background="#2B3745" x:Name="SaleLinesListBox" Margin="10,311,720,74" Foreground="White" SelectedIndex="0" SelectionChanged="SaleLinesListBox_SelectionChanged"/>
+        <Label Content="Pris:" Foreground="White" HorizontalAlignment="Left" Margin="467,64,0,0" VerticalAlignment="Top"/>
+        <Label Content="Retuneret:" Foreground="White" HorizontalAlignment="Left" Margin="467,95,0,0" VerticalAlignment="Top"/>
+        <Label Content="Discount:" Foreground="White" HorizontalAlignment="Left" Margin="467,121,0,0" VerticalAlignment="Top"/>
+        <Label Content="Salgsdato:" Foreground="White" HorizontalAlignment="Left" Margin="467,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.864,4.443"/>
+        <Label Content="Beløb betalt:" Foreground="White" HorizontalAlignment="Left" Margin="467,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="Betalingsform:" Foreground="White" HorizontalAlignment="Left" Margin="467,173,0,0" VerticalAlignment="Top"/>
+        <Label Content="Produkt:" Foreground="White" HorizontalAlignment="Left" Margin="467,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.404,-0.193"/>
+        <Label Content="Antal købt:" Foreground="White" HorizontalAlignment="Left" Margin="466,379,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.488,1.579"/>
+        <Label Content="Salgslinjepris:" Foreground="White" HorizontalAlignment="Left" Margin="466,405,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.563,3.544"/>
+        <Label Content="Produktets pris:" Foreground="White" HorizontalAlignment="Left" Margin="467,335,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.563,3.544"/>
+        <Label Content="Produktets Salgspris:" Foreground="White" HorizontalAlignment="Left" Margin="466,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.563,3.544"/>
+        <TextBlock x:Name="SaleTotalPriceTextBlock" HorizontalAlignment="Left" Margin="505,69,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="SaleslinePriceTextBlock" HorizontalAlignment="Left" Margin="564,410,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="QuantityTextBlock" HorizontalAlignment="Left" Margin="539,384,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="ProductPriceTextBlock" HorizontalAlignment="Left" Margin="564,340,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="ProductNameTextBlock" HorizontalAlignment="Left" Margin="540,316,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="SaleDateTextBlock" HorizontalAlignment="Left" Margin="540,209,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="PaymentOptionTextBlock" HorizontalAlignment="Left" Margin="558,178,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="AmountPaidTextBlock" HorizontalAlignment="Left" Margin="549,152,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="DiscountTextBlock" HorizontalAlignment="Left" Margin="540,126,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="ReturnedTextBlock" HorizontalAlignment="Left" Margin="540,100,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="ProductSalePriceTextBlock" HorizontalAlignment="Left" Margin="591,363,0,0" TextWrapping="Wrap" Text="TEST" Foreground="White" VerticalAlignment="Top" Width="380"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</UserControl>

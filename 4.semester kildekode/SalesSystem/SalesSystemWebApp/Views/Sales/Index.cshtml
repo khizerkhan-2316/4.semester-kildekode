@@ -1,0 +1,140 @@
+﻿
+
+@Styles.Render("~/css/modal.css")
+
+@{
+    ViewBag.Title = "Sale";
+}
+
+
+@section Styles{
+
+    <link href="~/css/modal.css" rel="stylesheet"/>
+}
+
+@model SalesSystemWebApp.ViewModels.SalesViewModel
+
+
+@Html.Partial("_Pageheading", "Salg")
+
+
+
+
+<h4 style="margin-top: 20px;">Produkter</h4>
+
+<table style="margin-top: 20px;" class="table table-bordered">
+    @Html.Partial("_TableHeader", new List<string> { "Billede", "Navn", "Beskrivelse", "Pris", "Salgspris", "Kategori", "Tilføj" })
+
+    @foreach (DataTransferObjects.Models.ProductDetailDto product in Model.Products)
+    {
+        <tr class="product-details-row">
+
+            <td style="display: none;">@product.ProductId</td>
+            <td><img src=@Url.Content(product.Picture.ImagePath) alt=@product.Picture.Title width="150" /> </td>
+            <td>@product.Name</td>
+            <td>@product.Description </td>
+            <td>@product.Price.ToString()</td>
+            <td>@product.SalePrice.ToString()</td>
+            <td style="display: none;">@product.Category.CategoryId</td>
+            <td> @product.Category.Name</td>
+            <td><button class="btn btn-primary add-salesline-btn">Tilføj til salgslinje</button></td>
+
+        </tr>
+    }
+
+</table>
+
+
+<h4 style="margin-top: 20px;">Salgslinjer</h4>
+
+<p id="sales-line-paragraph">Tilføj et produkt for at se salgslinjer.</p>
+<table id="sales-line-table" style="margin-top: 20px; visibility:hidden;" class="table table-bordered">
+    @Html.Partial("_TableHeader", new List<string> { "Salgslinje ID", "Produkt", "Antal", "Produkt pris", "Produkt salgspris", "Salgslinje pris", "Kategori", "Slet" })
+    <tbody id="sales-line-tbody"></tbody>
+
+</table>
+
+<div class="d-flex justify-content-between align-items-center">
+
+    <div>
+
+        <h4 style="margin-top: 20px;">Indtast rabat i %</h4>
+        <input id="discount-input" type="number" min="1" max="100" class="form-control" />
+
+    </div>
+
+    <div>
+
+        <h4 style="margin-top: 20px;">Vælg betalingsform</h4>
+
+        <div class="form-group d-flex">
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="card-payment-option">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Dankort
+                </label>
+            </div>
+
+            <div class="form-check" style="margin-left: 10px;">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="mobilepay-payment-option">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    MobilePay
+                </label>
+            </div>
+
+            <div class="form-check" style="margin-left: 10px;">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="cash-payment-option">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Kontant
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h4 style="margin-top: 20px;">Indtast betalt beløb</h4>
+        <input id="amount-paid-input" type="text" class="form-control" />
+    </div>
+</div>
+
+<h4 style="margin-top: 20px;">Salgsdetaljer</h4>
+
+
+<table class="table table-bordered">
+    @Html.Partial("_TableHeader", new List<string> { "Total pris", "Beløb betalt", "Betalingsmetode", "Discount", "Penge som skal retuneres", "Salgsdato" })
+    <tbody>
+        <tr id="sale-detail-row">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@DateTime.Now</td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+<button class="btn btn-primary" id="calculate-details">Beregn salgsdetaljer</button>
+
+<div class="form-group">
+
+    <button id="submit-btn" disabled style="margin-top: 20px;" class="btn btn-success">Afslut salg</button>
+    @Html.ActionLink("Reset vindue", "/", null, new { @class = "btn btn-secondary", @style = "margin-top: 20px;" })
+
+</div>
+
+
+@section Scripts {
+
+    <script type="text/javascript" src="@Url.Content("/js/Sale.js")"></script>
+}
+
+
+
+
+
+

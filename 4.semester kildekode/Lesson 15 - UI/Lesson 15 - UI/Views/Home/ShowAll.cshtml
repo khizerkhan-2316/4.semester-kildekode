@@ -1,0 +1,14 @@
+﻿@model List<Lesson_15___UI.Models.Person>
+
+@{
+    ViewBag.Title = "ShowAll";
+}
+
+
+
+@foreach (Lesson_15___UI.Models.Person person in Model)
+{
+    @Html.Action("ShowOnePerson", new { person = person })
+
+}
+

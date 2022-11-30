@@ -1,0 +1,74 @@
+﻿
+@using MusicStoreMVC.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+@helper DisplayBook(Book book)
+{
+
+    <div style="width: 30%; display: flex; flex-flow: column; margin-bottom: 20px;">
+
+        <p><b>Title:</b>@book.Title</p>
+        <p><b>Author:</b>@book.Author</p>
+        <p><b>Price:</b>@book.Price</p>
+        <p><b>Publisher:</b>@book.Publisher</p>
+        <p><b>ISBN:</b>@book.ISBN</p>
+        <img style="width: 100%;" src="~/Content/Images/@Url.Content(book.ImageUrl)" alt="Book picture" />
+    </div>
+
+}
+
+
+@helper DisplayMusicCD(MusicCD musicCD)
+{
+
+    <div style="width: 30%; display: flex; flex-flow: column; margin-bottom: 20px;">
+
+        <p><b>Album:</b>@musicCD.Title</p>
+        <p><b>Artist:</b>@musicCD.Price</p>
+        <p><b>Price:</b>@musicCD.Price</p>
+        <p><b>Label:</b>@musicCD.Label</p>
+        <img style="width: 50%;" src="~/Content/Images/@Url.Content(musicCD.ImageUrl)" alt="Music CD picture" />
+       
+    </div>
+
+}
+
+
+@helper DisplayTracks(MusicCD cd)
+{
+    <div  style="margin-bottom: 20px;">
+        <h2>Tracks</h2>
+        <ol>
+
+
+            @foreach (Track track in cd.TrackList)
+            {
+                <li style="padding: 10px 0px 10px 0px">@track.Title, @track.Length</li>
+            }
+
+
+        </ol>
+        <p><b>Total playing time:</b> @cd.GetPlayingTime().Minutes minutes and @cd.GetPlayingTime().Seconds seconds</p>
+    </div>
+}
+
+
+<div style="width: 100%; height: 100%; display: flex; flex-flow: row wrap; justify-content: space-around">
+    @DisplayBook(ViewBag.Book)
+    @DisplayMusicCD(ViewBag.MusicCD)
+    @DisplayTracks(ViewBag.MusicCD)
+
+
+    @DisplayBook(ViewBag.Book1)
+    @DisplayMusicCD(ViewBag.MusicCD1)
+    @DisplayTracks(ViewBag.MusicCD1)
+
+
+
+
+</div>

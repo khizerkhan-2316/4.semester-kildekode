@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.Title;
+}
+
+@Html.Partial("_PageHeading", (string)ViewBag.Title)
+
+
+@model SalesSystemWebApp.ViewModels.CategoriesViewModel
+
+
+@using (Html.BeginForm((string)ViewBag.ACTIONMETHOD, "Categories", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Category.Name)
+        @Html.EditorFor(model => model.Category.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Category.Name, "", new { @class = "text-danger" })
+
+    </div>
+
+
+    <button class="btn btn-primary" type="submit" value="Submit">@ViewBag.ButtonTitle</button>
+    @Html.ActionLink("Tilbage", "Index", null, new { @class = "btn btn-primary", @style = "margin-left:10px;" })
+
+
+}
+
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+}  

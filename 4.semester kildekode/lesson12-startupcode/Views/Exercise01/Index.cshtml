@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<a href="@HttpContext.Current.Request.Url">Lesson 2: Exercise 1</a>
+
+<div style="width: 100%; height: 100%;">
+    <h1>Products</h1>
+    <div style="width: 100%; display: flex; flex-flow: row wrap; justify-content: space-around">
+
+        <div style="width: 25%; border: 1px solid black;">
+            <h2>@ViewBag.Glass.Name</h2>
+            <p>Price: @String.Format("{0:0.00}", ViewBag.Glass.Price)</p>
+            <img style="width: 50px;" src="content\images\@ViewBag.Glass.ImageUrl" alt="@ViewBag.Glass.Name" />
+            <p>Manufacturer: @ViewBag.Glass.Manufacturer</p>
+
+        </div>
+
+
+        <div style="width: 25%; border: 1px solid black;">
+            <h2>@ViewBag.Bin.Name</h2>
+            <p>Price: @String.Format("{0:0.00}", ViewBag.Bin.Price)</p>
+            <img style="width: 50px;" src="content\images\@ViewBag.Bin.ImageUrl" alt="@ViewBag.Bin.Name" />
+            <p>Manufacturer: @ViewBag.Bin.Manufacturer</p>
+        </div>
+
+
+        <div style="width: 25%; border: 1px solid black;">
+            <h2>@ViewBag.Knife.Name</h2>
+            <p>Price: @String.Format("{0:0.00}", ViewBag.Knife.Price)</p>
+            <img style="width: 50px;" src="content\images\@ViewBag.Knife.ImageUrl" alt="@ViewBag.Knife.Name" />
+            <p>Manufacturer: @ViewBag.Knife.Manufacturer</p>
+
+        </div>
+    </div>
+</div>

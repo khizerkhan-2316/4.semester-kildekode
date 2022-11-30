@@ -1,0 +1,92 @@
+﻿
+@model SalesSystemWebApp.ViewModels.ProductsViewModel
+@{
+    ViewBag.Title = ViewBag.Title;
+}
+
+@Html.Partial("_PageHeading", (string)ViewBag.Title)
+
+@using (Html.BeginForm((string)ViewBag.ACTIONMETHOD, "Products", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Product.Name)
+        @Html.EditorFor(model => model.Product.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Product.Name, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Product.Description)
+        @Html.TextAreaFor(model => model.Product.Description, new { @class = "form-control", @style = "resize: none;" })
+        @Html.ValidationMessageFor(model => model.Product.Description, "", new { @class = "text-danger" })
+
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Product.Price)
+        @Html.EditorFor(model => model.Product.Price, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Product.Price, "", new { @class = "text-danger" })
+
+
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Product.SalePrice)
+        @Html.EditorFor(model => model.Product.SalePrice, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Product.SalePrice, "", new { @class = "text-danger" })
+
+
+    </div>
+
+    <div class="form-group">
+        @Html.HiddenFor(model => model.Product.Category.Name)
+        @Html.LabelFor(model => model.Product.Category)
+        @Html.DropDownListFor(model => model.Product.Category.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), "---Vælg Kategori---", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Product.Category.CategoryId, "", new { @class = "text-danger" })
+
+    </div>
+
+
+    <div class="form-group">
+
+       @Html.LabelFor(model => model.Product.Picture.ImagePath)
+        <input class="form-control" type="file" name="Product.Picture.ImageFile"/>
+        @Html.ValidationMessageFor(model => model.Product.Picture.ImagePath)
+    </div>
+
+
+    <button class="btn btn-primary" type="submit" value="Submit">@ViewBag.ButtonTitle</button>
+    @Html.ActionLink("Tilbage", "Index", null, new { @class = "btn btn-primary", @style = "margin-left:10px;" })
+
+
+}
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#Product_Category_CategoryId").change(function (evt) {
+
+                var text = $("#Product_Category_CategoryId option:selected").text();
+
+                $("#Product_Category_Name").val(text);
+
+
+
+            })
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}  

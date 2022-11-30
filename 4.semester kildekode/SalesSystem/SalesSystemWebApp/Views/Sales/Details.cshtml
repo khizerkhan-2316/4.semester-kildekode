@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+@model SalesSystemWebApp.ViewModels.SalesViewModel
+
+@Html.Partial("_PageHeading", "Salgsdetaljer")
+
+
+<h5 style="margin-top: 10px;">Generelle detaljer:</h5>
+
+
+<table style="margin-top: 20px;" class="table table-bordered">
+
+    @Html.Partial("_TableHeader", new List<string> { "Salgs ID", "Total pris", "Betalt", "Antal retuneret", "Betalingsform", "Discount %", "Salgsdato" })
+
+    <tr>
+        <td>@Html.DisplayFor(model => model.SaleDetails.SaleId)</td>
+        <td>@Html.DisplayFor(model => model.SaleDetails.TotalPrice)</td>
+        <td>@Html.DisplayFor(model => model.SaleDetails.Payment.AmountPaid)</td>
+        <td>@Html.DisplayFor(model => model.SaleDetails.AmountReturned)</td>
+        <td>@Html.DisplayFor(model => model.SaleDetails.PaymentOption.Name)</td>
+        <td>@Html.DisplayFor(model => model.SaleDetails.Discount)</td>
+        <td>@Html.DisplayFor(model => model.SaleDetails.SaleDate)</td>
+    </tr>
+
+</table>
+
+<h5 style="margin-top: 10px;">Salgslinjer:</h5>
+
+
+<table style="margin-top: 20px;" class="table table-bordered">
+
+    @Html.Partial("_TableHeader", new List<string> { "Salgslinje ID", "Total salgslinje pris", "Antal", "Produkets navn", "Kategori" })
+
+
+    @foreach (DataTransferObjects.Models.SalesLineDto saleline in Model.SaleDetails.SalesLines)
+    {
+        @Html.Partial("_SaleLine", saleline)
+    }
+</table>
+
+@Html.ActionLink("Tilbage", "Overview", "Sales", null, new { @class = "btn btn-primary" })

@@ -1,0 +1,19 @@
+﻿
+@model SalesSystemWebApp.ViewModels.ProductsViewModel
+
+@using (Html.BeginForm("Search", "Products", FormMethod.Get))
+{
+
+
+           <div class="form-inline mb-2" style="margin-top: 20px;">
+               @Html.EditorFor(model => model.Query, new { htmlAttributes = new { @class = "form-control", placeholder = "Søg på navn..." } })
+
+               @Html.DropDownListFor(model => model.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), "Filter på kategori", new { @class = "form-control", @style = "margin-left: 20px;" })
+
+               @Html.DropDownListFor(model => model.Sort, Model.SortOptions, "Sortere", new { @class = "form-control", @style = "margin-left: 20px;" })
+               <button style="margin-left: 20px;" value="søg" type="submit" class="btn btn-success"> søg</button>
+
+               @Html.ActionLink("Reset søgning", "Index", null, new { @class = "btn btn-secondary", @style = "margin-left: 20px;" })
+           </div>
+
+}

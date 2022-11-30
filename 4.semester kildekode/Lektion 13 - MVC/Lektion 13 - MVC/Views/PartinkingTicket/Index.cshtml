@@ -1,0 +1,36 @@
+﻿@model Lektion_13___MVC.Models.ParkingTicketMachine
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+
+        @Html.LabelFor((Model => Model.TimeNow))
+        @Html.EditorFor((Model => Model.TimeNow), new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor((Model => Model.PaidUntil))
+        @Html.EditorFor((Model => Model.PaidUntil), new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+
+    <div class="form-group">
+
+        @Html.LabelFor((Model => Model.Info))
+        @Html.EditorFor((Model => Model.Info), new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor((Model => Model.AmountInserted))
+        @Html.EditorFor((Model => Model.AmountInserted), new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+}

@@ -1,0 +1,18 @@
+﻿
+@model DataTransferObjects.Models.SalesLineDto
+
+
+<tr>
+
+    <td>@Html.DisplayFor(model => model.SalesLineId)</td>
+    <td>@Html.DisplayFor(model => model.TotalPrice)</td>
+    <td>@Html.DisplayFor(model => model.Quantity)</td>
+    <td>@Html.DisplayFor(model => model.Product.Name)</td>
+    <td>@Html.DisplayFor(model => model.Product.Category.Name)</td>
+
+</tr>
+
+
+
+
+

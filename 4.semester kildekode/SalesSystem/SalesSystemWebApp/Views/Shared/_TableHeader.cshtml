@@ -1,0 +1,18 @@
+﻿@model List<string>
+
+
+
+
+
+<thead style="background-color: #2B3945; color: #FFF; border-radius: 20px; ">
+
+    <tr>
+       @{ 
+           foreach(string tableHeader in Model)
+            {
+                <th scope="col">@tableHeader</th>
+            }
+       }
+
+    </tr>
+</thead>

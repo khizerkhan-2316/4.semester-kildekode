@@ -1,0 +1,12 @@
+﻿
+@model DataTransferObjects.Models.CategoryDto
+
+
+<tr>
+
+    <td>@Html.DisplayFor(Model => Model.Name)</td>
+    <td>@Html.ActionLink("Se produkter", "Search","Products" , new { CategoryId = Model.CategoryId }, new { @class = "btn btn-primary" })</td>
+    <td>@Html.ActionLink("Opdatere", "Update", new { id = Model.CategoryId }, new { @class = "btn btn-primary" })</td>
+    <td>@Html.ActionLink("Slet", "Delete", new { id = Model.CategoryId }, new { @class = "btn btn-danger" })</td>
+
+</tr>

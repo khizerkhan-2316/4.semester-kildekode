@@ -1,0 +1,34 @@
+﻿
+@using Lesson02_Startup.Models;
+
+@{
+
+    ViewBag.Title = "Index";
+}
+
+@helper RenderPerson(Person person) { 
+    
+     <div style="width: 25%;">
+        <h2>Name: @person.FirstName @person.LastName  </h2>
+        <p>Address: @person.Address</p>
+        <p>ZIP: @person.Zip</p>
+        <p>City: @person.City</p>
+         <p>Phone number: @String.Join(", ", person.PhoneNumber) </p>
+         <p>Age: @person.Age</p>
+    </div>
+    
+    }
+
+
+
+<div style="width: 100%; height: 100%;">
+    <h1>Persons:</h1>
+    <div style="width: 100%;display: flex; flex-flow: row wrap; justify-content: space-around">
+       
+            @foreach(Person person in ViewBag.Persons){
+
+               @RenderPerson(person)
+            }
+        
+    </div>
+</div>

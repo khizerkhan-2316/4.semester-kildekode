@@ -1,0 +1,50 @@
+﻿<Window x:Class="SalesSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesSystem"
+        xmlns:viewmodels="clr-namespace:SalesSystem.ViewModels"
+        xmlns:views="clr-namespace:SalesSystem.Views"
+        mc:Ignorable="d"
+        Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewmodels:HomeViewModel}">
+            <views:HomeView DataContext="{Binding}"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Name="productViewTemplate" DataType="{x:Type viewmodels:ProductViewModel}">
+            <views:ProductView DataContext="{Binding}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Name="categoryViewTemplate" DataType="{x:Type viewmodels:CategoryViewModel}">
+            <views:CategoryView DataContext="{Binding}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Name="saleViewTemplate" DataType="{x:Type viewmodels:SaleViewModel}">
+            <views:SaleView DataContext="{Binding}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Name="createSaleViewTemplate" DataType="{x:Type viewmodels:CreateSaleViewModel}">
+            <views:CreateSaleView DataContext="{Binding}"/>
+        </DataTemplate>
+
+    </Window.Resources>
+    <StackPanel Background="WhiteSmoke">
+        <Grid Height="50" Background="#2B3945">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+                <Button Uid="0" Width="150" Content="Foretag salg" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFF" Click="CreateSaleView_Click" FontSize="16" FontWeight="Bold"></Button>
+                <Button Uid="1" Width="150" Content="Salgsoverblik" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFF" Click="SaleView_Click" FontSize="16" FontWeight="Bold"></Button>
+                <Button Uid="2" Width="150" Content="Produkter" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFF" Click="ProductView_Click" FontSize="16" FontWeight="Bold"></Button>
+                <Button Uid="3" Width="150" Content="Kategorier" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFF" Click="CategoryView_Click" FontSize="16" FontWeight="Bold"></Button>
+
+            </StackPanel>
+            <Grid x:Name="GridCursor" Width="150" Height="5" Background="Transparent" HorizontalAlignment="Left" Margin="10 0"></Grid>
+        </Grid>
+
+        <Grid x:Name="GridMain" Height="550" Background="#202C37">
+            <ContentControl Content="{Binding}"/>
+        </Grid>
+   
+    </StackPanel>
+</Window>
