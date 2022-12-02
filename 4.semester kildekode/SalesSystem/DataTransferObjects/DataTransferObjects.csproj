@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,9 +48,10 @@
   <ItemGroup>
     <Compile Include="Models\CategoryDetailDto.cs" />
     <Compile Include="Models\CategoryDto.cs" />
+    <Compile Include="Models\FeedAttributeDto.cs" />
+    <Compile Include="Models\FeedCategoryDto.cs" />
     <Compile Include="Models\FeedDetailDto.cs" />
     <Compile Include="Models\FeedDto.cs" />
-    <Compile Include="Models\FeedItemDto.cs" />
     <Compile Include="Models\PaymentDto.cs" />
     <Compile Include="Models\PaymentOptionDto.cs" />
     <Compile Include="Models\PictureDto.cs" />

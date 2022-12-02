@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+@model SalesSystemWebApp.ViewModels.FeedsViewModel
+
+@Html.Partial("_PageHeading", Model.Feed.Title)
+
+@Html.ActionLink("Tilbage", "Index", null, new { @class = "btn btn-primary", @style= "margin-top: 20px; margin-bottom: 20px;" } )
+
+@Html.Partial("_Card", Model)
+
+
+@Html.Partial("_FeedDetailCard", Model)
+@Html.Partial("_FeedCategoryCard", Model)
+@Html.Partial("_FeedAttributeCard", Model)

@@ -1,0 +1,23 @@
+﻿
+@model SalesSystemWebApp.ViewModels.FeedsViewModel
+
+@using DataTransferObjects.Models
+
+<div class="card bg-light mb-3 overflow-scroll">
+
+    <div class="card-header">
+        <h4>Valgte Attributter</h4>
+    </div>
+
+    <div class="card-body">
+        
+        <p class="d-inline">ProductId,</p>
+           @foreach (FeedAttributeDto attribute in Model.Feed.Attributes)
+            {
+                <p class="d-inline">@attribute.Attribute,</p>
+            }
+
+
+    </div>
+
+</div>

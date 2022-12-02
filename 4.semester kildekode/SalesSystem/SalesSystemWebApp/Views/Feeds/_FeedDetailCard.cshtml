@@ -1,0 +1,39 @@
+﻿
+
+@model SalesSystemWebApp.ViewModels.FeedsViewModel
+
+
+
+<div class="card bg-light mb-3 overflow-scroll">
+
+    <div class="card-header">
+        <h4>Feed Detaljer</h4>
+    </div>
+
+    <div class="card-body">
+        <p>@Model.Feed.Description</p>
+        <div class="d-flex">
+            <b>@Html.LabelFor(model => model.Feed.Format)</b>
+            <p style="margin-left: 10px;">@Html.DisplayFor(model => model.Feed.Format)</p>
+        </div>
+
+        <div class="d-flex">
+            <b>@Html.LabelFor(model => model.Feed.Limit)</b>
+            <p style="margin-left: 10px;">@(Model.Feed.Limit != null? Model.Feed.Limit.ToString() : "Ikke angivet")</p>
+        </div>
+
+        <div class="d-flex">
+            <b>@Html.LabelFor(model => model.Feed.Link)</b>
+            <a class="link-primary" href="@(Model.Feed.Link != null? Model.Feed.Link : "")" style="margin-left: 10px;">@(Model.Feed.Link != null? Model.Feed.Link : "Ikke angivet")</a>
+        </div>
+
+        <div class="d-flex">
+            <b>@Html.LabelFor(model => model.Feed.BuildDateTime)</b>
+            <p style="margin-left: 10px;">@Html.DisplayFor(model=>model.Feed.BuildDateTime)</p>
+        </div>
+
+    </div>
+
+</div>
+
+

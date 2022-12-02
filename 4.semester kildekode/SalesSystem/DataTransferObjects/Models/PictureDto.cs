@@ -37,5 +37,10 @@ namespace DataTransferObjects.Models
 		{
 			
 		}
+
+		public override string ToString()
+		{
+			return ImagePath;
+		}
 	}
 }

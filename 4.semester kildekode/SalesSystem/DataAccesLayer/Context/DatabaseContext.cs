@@ -30,5 +30,11 @@ namespace DataAccessLayer.Context
 
         public DbSet<Picture> Pictures { get; set; }    
 
+        public DbSet<Feed> Feeds { get; set; }
+
+        public DbSet<FeedAttribute> FeedAttributes { get; set; }
+
+        public DbSet<FeedCategory> FeedCategories { get; set; }
+
     }
 }

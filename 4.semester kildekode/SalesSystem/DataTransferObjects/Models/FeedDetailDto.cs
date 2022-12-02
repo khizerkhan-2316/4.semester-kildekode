@@ -34,15 +34,16 @@ namespace DataTransferObjects.Models
 		[Range(1, int.MaxValue, ErrorMessage = "Limit skal være på minimum 1")]
 		public int? Limit { get; set; }
 
-		[Required(AllowEmptyStrings = false, ErrorMessage = "Der skal angives et link")]
+		
 		[MinLength(5, ErrorMessage = "Link skal være på minimum 5 karakter."), MaxLength(100, ErrorMessage = "Link skal være på maksismum 100 karakter.")]
-		public string link { get; set; }
+		public string Link { get; set; }
 
 		[Required]
-		public List<string> Attributes { get; set; }
+		public virtual List<FeedAttributeDto> Attributes { get; set; }
 
 		[Required]
-		public List<string> Categories { get; set; }
+		public virtual List<FeedCategoryDto> Categories { get; set; }
+
 
 		[Required, DataType(DataType.DateTime)]
 		public DateTime BuildDateTime { get; set; }
@@ -51,8 +52,8 @@ namespace DataTransferObjects.Models
 		public FeedDetailDto()
 		{
 			FeedId = Guid.NewGuid();
-			Attributes = new List<string>();
-			Categories = new List<string>();
+			Attributes = new List<FeedAttributeDto>();
+			Categories = new List<FeedCategoryDto>();
 			BuildDateTime = DateTime.Now;
 		}
 	}

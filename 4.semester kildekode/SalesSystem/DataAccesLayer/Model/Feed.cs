@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Model
 {
-	public class Feed<T> where T : FeedItem
+	public class Feed
 	{
 
 		[Key]
@@ -30,10 +30,10 @@ namespace DataAccessLayer.Model
 		public string link { get; set; }
 
 		[Required]
-		public List<string> Attributes { get; set; }
+		public virtual List<FeedAttribute> Attributes { get; set; }
 
 		[Required]
-		public List<string> Categories { get; set; }
+		public virtual List<FeedCategory> Categories { get; set; }
 
 		[Required, DataType(DataType.DateTime)]
 		public DateTime BuildDateTime { get; set; }
@@ -41,8 +41,8 @@ namespace DataAccessLayer.Model
 		public Feed() 
 		{
 			FeedId = Guid.NewGuid();
-			Attributes = new List<string>();
-			Categories = new List<string>();
+			Attributes = new List<FeedAttribute>();
+			Categories = new List<FeedCategory>();
 			BuildDateTime = DateTime.Now;
 		
 		}	

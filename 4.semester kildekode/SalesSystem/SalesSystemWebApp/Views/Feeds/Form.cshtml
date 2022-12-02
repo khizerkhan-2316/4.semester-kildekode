@@ -42,36 +42,34 @@
         @Html.ValidationMessageFor(model => model.Feed.Limit, "", new { @class = "text-danger" })
     </div>
 
-    <div class="form-group">
-
-        @Html.LabelFor(model => model.Feed.link)
-        @Html.EditorFor(model => model.Feed.link, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Feed.link, "", new { @class = "text-danger" })
-    </div>
+  
 
 
     <label>Vælg attributter som skal inkluderes i feedet</label>
-    <div class="properties-wrapper d-flex">
+    <div id="properties-wrapper" class="d-flex">
         @foreach (var property in Model.Product.GetType().GetProperties())
         {
-            <div class="form-group pl-2">
-                @Html.CheckBox(property.ToString())
-                @Html.DisplayFor(model => property.Name)
+            if (property.Name != "ProductId")
+            {
+                <div class="form-group pl-2">
+                    @Html.CheckBox(property.ToString())
+                    @Html.Label(property.Name)
 
-            </div>
+                </div>
+            }
 
         }
     </div>
 
     <label>Vælg de kategorier som du vil have produkter skal medtages for</label>
-    <div class="categories-wrapper d-flex">
+    <div id="categories-wrapper" class="d-flex">
 
         @foreach (DataTransferObjects.Models.CategoryDto category in Model.Categories)
         {
             <div class="form-group pl-2">
 
-                @Html.CheckBox(category.CategoryId.ToString())
-                @Html.DisplayFor(model => category.Name)
+                @Html.CheckBox(category.CategoryId.ToString(), false, new { @id= category.CategoryId})
+                @Html.Label(category.Name)
             </div>
         }
     </div>
@@ -80,7 +78,7 @@
 
 </form>
 
-
+<button id="feed-submit-btn" class="btn btn-success">Opret</button>
 @Html.ActionLink("Tilbage", "Index", null, new { @class = "btn btn-primary" })
 
 
@@ -89,4 +87,5 @@
 @section Scripts {
   
     @Scripts.Render("~/bundles/jqueryval")
+  <script type="text/javascript" src="~/js/Feed.js"></script>
 }  

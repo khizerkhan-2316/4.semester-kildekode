@@ -1,7 +1,10 @@
 ﻿
+
 @{
     ViewBag.Title = "Feeds";
 }
+
+@model SalesSystemWebApp.ViewModels.FeedsViewModel
 
 @Html.Partial("_PageHeading", "Administerer Productfeeds")
 
@@ -9,3 +12,15 @@
 
 @Html.ActionLink("Opret nyt feed", "Create", null, new { @class = "btn btn-primary" })
 
+<table style="margin-top: 20px;" class="table table-bordered">
+
+    @Html.Partial("_TableHeader", new List<string> { "Titel", "Beskrivelse", "Feed Format", "Limit", "Se detaljer", "Se feed", "Opdatere", "Slet" })
+
+
+    @foreach (DataTransferObjects.Models.FeedDto feed in Model.Feeds)
+    {
+        @Html.Partial("_Feed", feed)
+    }
+</table>
+
+<h5 style="margin-top: 20px;">Antal Feeds: @Model.Feeds.Count</h5>

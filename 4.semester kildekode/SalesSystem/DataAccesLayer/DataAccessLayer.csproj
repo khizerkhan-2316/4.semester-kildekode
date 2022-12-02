@@ -58,6 +58,7 @@
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\Initializer.cs" />
     <Compile Include="Mappers\CategoryMapper.cs" />
+    <Compile Include="Mappers\FeedMapper.cs" />
     <Compile Include="Mappers\PictureMapper.cs" />
     <Compile Include="Mappers\ProductMapper.cs" />
     <Compile Include="Mappers\SaleMapper.cs" />
@@ -77,10 +78,19 @@
     <Compile Include="Migrations\202211281714276_ModelValidationV2.designer.cs">
       <DependentUpon>202211281714276_ModelValidationV2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211302309399_FeedMigration.cs" />
+    <Compile Include="Migrations\202211302309399_FeedMigration.designer.cs">
+      <DependentUpon>202211302309399_FeedMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212010004065_FeedMigrationV2.cs" />
+    <Compile Include="Migrations\202212010004065_FeedMigrationV2.designer.cs">
+      <DependentUpon>202212010004065_FeedMigrationV2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Feed.cs" />
-    <Compile Include="Model\FeedItem.cs" />
+    <Compile Include="Model\FeedAttribute.cs" />
+    <Compile Include="Model\FeedCategory.cs" />
     <Compile Include="Model\Payment.cs" />
     <Compile Include="Model\PaymentOption.cs" />
     <Compile Include="Model\Picture.cs" />
@@ -89,6 +99,7 @@
     <Compile Include="Model\SalesLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\FeedRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\PictureRepository.cs" />
     <Compile Include="Repositories\ProductRespository.cs" />
@@ -110,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211281714276_ModelValidationV2.resx">
       <DependentUpon>202211281714276_ModelValidationV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211302309399_FeedMigration.resx">
+      <DependentUpon>202211302309399_FeedMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212010004065_FeedMigrationV2.resx">
+      <DependentUpon>202212010004065_FeedMigrationV2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

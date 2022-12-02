@@ -1,0 +1,16 @@
+﻿
+@model DataTransferObjects.Models.FeedDto
+
+
+<tr tyle="margin-top: 100px;">
+
+    <td>@Html.DisplayFor(model => model.Title)</td>
+    <td>@Html.DisplayFor(model => model.Description)</td>
+    <td>@Html.DisplayFor(model => model.Format)</td>
+    <td>@Html.DisplayFor(model => model.Limit)</td>
+
+    <td>@Html.ActionLink("Se detaljer", "Details", new { id = Model.FeedId }, new { @class = "btn btn-primary" })</td>
+    <td><a class="btn btn-primary" href="@Model.Link" target="_blank">Se feed</a></td>
+    <td>@Html.ActionLink("Opdatere", "Update", new { id = Model.FeedId }, new { @class = "btn btn-primary" })</td>
+    <td>@Html.ActionLink("Slet", "Delete", new { id = Model.FeedId }, new { @class = "btn btn-danger" })</td>
+</tr>

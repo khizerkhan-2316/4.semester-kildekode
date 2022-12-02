@@ -17,6 +17,8 @@ namespace SalesSystemWebApp.ViewModels
 
 		public FeedDetailDto Feed {get; set;}
 
+		public List<FeedDto> Feeds { get; set; }
+
 		public List<SelectListItem> Formats { get; set; }
 
 		public ProductDetailDto Product { get; set; }
@@ -29,9 +31,11 @@ namespace SalesSystemWebApp.ViewModels
 
 
 
+
 		public FeedsViewModel()
 		{
 			Feed = new FeedDetailDto();
+			Feeds = feedController.GetFeeds();
 			Formats = new List<SelectListItem>
 			{
 				new SelectListItem { Text = "xml", Value = "xml"},
@@ -41,9 +45,31 @@ namespace SalesSystemWebApp.ViewModels
 
 			Product = new ProductDetailDto();
 			Categories = categoryController.GetCategories();
+			InitializeFeedAttributes();
+			InitializeFeedCategories();
+		}
+
+
+
+		private void InitializeFeedAttributes()
+		{
+			List<FeedAttributeDto> attributes = new List<FeedAttributeDto>();
+
+			Product.GetType().GetProperties().ToList().ForEach(info => attributes.Add(new FeedAttributeDto {FeedAttributeId = Guid.NewGuid(), Attribute = info.Name }));
+
+			Feed.Attributes= attributes;
+		}
+
+		private void InitializeFeedCategories()
+		{
+			List<FeedCategoryDto> categories = new List<FeedCategoryDto>();
+
+			Categories.ForEach(category => categories.Add(new FeedCategoryDto { FeedCategoryId = Guid.NewGuid(), FeedCategoryName = category.Name, CategoryId = category.CategoryId }));
+
+			Feed.Categories = categories;
 
 		}
 
-	
+
 	}
 }

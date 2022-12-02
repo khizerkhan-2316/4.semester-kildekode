@@ -1,0 +1,23 @@
+﻿
+@model SalesSystemWebApp.ViewModels.FeedsViewModel
+
+@using DataTransferObjects.Models
+
+<div class="card bg-light mb-3 overflow-scroll">
+
+    <div class="card-header">
+        <h4>Valgte kategorier</h4>
+    </div>
+
+    <div class="card-body">
+       
+            @foreach (FeedCategoryDto category in Model.Feed.Categories)
+            {
+                <p class="d-inline">@category.FeedCategoryName,</p>
+            }
+
+   
+
+    </div>
+
+</div>
