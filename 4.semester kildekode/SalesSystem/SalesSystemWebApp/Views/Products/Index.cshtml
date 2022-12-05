@@ -9,7 +9,7 @@
 @helper SearchResultMessage(string message)
 {
 
-    if (Model.Products.Count == 0)
+    if (Model.Products.Count == 0 && (Model.Query != "" || Model.Sort != "" ))
     {
         <h2>Ingen resultater på din søgning.</h2>
     }

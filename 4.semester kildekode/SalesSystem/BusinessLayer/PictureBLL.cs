@@ -10,23 +10,24 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-	public class PictureController
+	public class PictureBLL
 	{
 
-		private static PictureController instance;
+		private static PictureBLL instance;
 		private readonly PictureRepository repository;
 
 
-		private PictureController()
+		private PictureBLL()
 		{
-			repository = new PictureRepository();	
+			repository = new PictureRepository();
 		}
 
-		public static PictureController GetController() {
+		public static PictureBLL GetController()
+		{
 
 			if (instance == null)
 			{
-				instance = new PictureController();
+				instance = new PictureBLL();
 			}
 
 			return instance;
@@ -36,7 +37,7 @@ namespace BusinessLayer
 		{
 			Picture created = new Picture(picture.Title, picture.ImagePath);
 			created.ImageFile = picture.ImageFile;
-			created.PictureId= picture.PictureId;
+			created.PictureId = picture.PictureId;
 			repository.InsertEntity(created);
 
 		}
@@ -48,6 +49,14 @@ namespace BusinessLayer
 			fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
 			return fileName;
 
+		}
+
+		public PictureDto ModifyPicture(PictureDto picture)
+		{
+			picture.ImagePath = $"~/Images/{GetImagePath(picture)}";
+			picture.Title = GetImageTitle(picture);
+			picture.PictureId = Guid.NewGuid();
+			return picture;
 		}
 
 		public string GetImageTitle(PictureDto picture)

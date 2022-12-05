@@ -1,5 +1,5 @@
 ﻿
-@model SalesSystemWebApp.ViewModels.FeedsViewModel
+@model List<FeedAttributeDto>
 
 @using DataTransferObjects.Models
 
@@ -11,8 +11,7 @@
 
     <div class="card-body">
         
-        <p class="d-inline">ProductId,</p>
-           @foreach (FeedAttributeDto attribute in Model.Feed.Attributes)
+           @foreach (FeedAttributeDto attribute in Model)
             {
                 <p class="d-inline">@attribute.Attribute,</p>
             }

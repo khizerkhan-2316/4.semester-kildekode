@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class SaleController
+    public class SaleBLL
     {
 
-        private static SaleController instance;
+        private static SaleBLL instance;
         private readonly SaleRepository repository;
 
 
-        private SaleController()
+        private SaleBLL()
         {
             repository = new SaleRepository();
         }
 
-        public static SaleController GetController()
+        public static SaleBLL GetController()
         {
             if(instance == null)
             {
-                instance = new SaleController();
+                instance = new SaleBLL();
             }
 
             return instance;
@@ -33,7 +33,7 @@ namespace BusinessLayer
 
         public List<SaleDto> GetSales()
         {
-            return repository.GetEntities().ToList();
+            return repository.GetEntities();
         }
 
         public SaleDetailDto GetSaleDetails(Guid id)

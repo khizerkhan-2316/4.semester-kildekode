@@ -1,5 +1,5 @@
 ﻿
-@model SalesSystemWebApp.ViewModels.FeedsViewModel
+@model List<FeedCategoryDto>
 
 @using DataTransferObjects.Models
 
@@ -11,7 +11,7 @@
 
     <div class="card-body">
        
-            @foreach (FeedCategoryDto category in Model.Feed.Categories)
+            @foreach (FeedCategoryDto category in Model)
             {
                 <p class="d-inline">@category.FeedCategoryName,</p>
             }

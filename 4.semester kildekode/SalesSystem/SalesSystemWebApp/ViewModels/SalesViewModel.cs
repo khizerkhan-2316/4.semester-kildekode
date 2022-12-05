@@ -12,9 +12,9 @@ namespace SalesSystemWebApp.ViewModels
     public class SalesViewModel
     {
 
-        public CategoryController categoryController = CategoryController.GetController();
-        public SaleController saleController = SaleController.GetController();
-        public ProductController productController = ProductController.GetController();
+        public CategoryBLL categoryController = CategoryBLL.GetController();
+        public SaleBLL saleController = SaleBLL.GetController();
+        public ProductBLL productController = ProductBLL.GetController();
 
         public SaleDetailDto Sale { get; set; }
 

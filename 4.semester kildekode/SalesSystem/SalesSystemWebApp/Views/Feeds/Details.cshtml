@@ -13,5 +13,5 @@
 
 
 @Html.Partial("_FeedDetailCard", Model)
-@Html.Partial("_FeedCategoryCard", Model)
-@Html.Partial("_FeedAttributeCard", Model)
+@Html.Partial("_FeedCategoryCard", Model.Feed.Categories)
+@Html.Partial("_FeedAttributeCard", Model.Feed.Attributes)

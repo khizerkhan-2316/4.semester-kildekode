@@ -7,26 +7,38 @@ using DataTransferObjects.Models;
 
 namespace SalesSystemWebApp.ViewModels
 {
-    public class CategoriesViewModel
-    {
+	public class CategoriesViewModel
+	{
 
-        public readonly CategoryController categoryController = CategoryController.GetController();
-
-        public List<CategoryDto> Categories { get; }
-
-        public CategoryDto Category { get; set; }   
-
-        public string ErrorMessage { get; set; }
+		public readonly CategoryBLL categoryController = CategoryBLL.GetController();
 
 
-        public CategoriesViewModel()
-        {
-            Categories = categoryController.GetCategories();    
-            Category = new CategoryDto();
-            ErrorMessage = "";
-        }
+		public CategoryDto Category { get; set; }
+
+		public List<CategoryDto> Categories { get; }
+
+		public string Title { get; set; }
+
+		public string ActionMethod { get; set; }
+
+		public string ButtonTitle { get; set; }
+		public string ErrorMessage { get; set; }
 
 
+		public CategoriesViewModel()
+		{
+			Categories = categoryController.GetCategories();
+			Category = new CategoryDto();
+			ErrorMessage = "";
+		}
 
-    }
+		public void UpdateView(string title, string actionMethod, string buttonTitle)
+		{
+			Title = title;
+			ActionMethod = actionMethod;
+			ButtonTitle = buttonTitle;
+		}
+
+	}
 }
+

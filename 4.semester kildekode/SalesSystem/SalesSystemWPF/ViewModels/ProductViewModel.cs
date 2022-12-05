@@ -10,7 +10,7 @@ namespace SalesSystem.ViewModels
 {
     public class ProductViewModel
     {
-        private ProductController controller = ProductController.GetController();
+        private ProductBLL controller = ProductBLL.GetController();
 
 
 

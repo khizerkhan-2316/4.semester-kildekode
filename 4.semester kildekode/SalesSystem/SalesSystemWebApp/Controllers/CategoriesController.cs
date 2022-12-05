@@ -8,88 +8,85 @@ using System.Web.Mvc;
 
 namespace SalesSystemWebApp.Controllers
 {
-    public class CategoriesController : Controller
-    {
-        private readonly CategoriesViewModel viewModel;
+	public class CategoriesController : Controller
+	{
+		private readonly CategoriesViewModel _viewModel;
 
-        public CategoriesController()
-        {
-            viewModel = new CategoriesViewModel();
-        }
-
-
-        // GET: Categories
-        public ActionResult Index()
-        {
-        
-
-            return View("Index", viewModel);
-        }
+		public CategoriesController()
+		{
+			_viewModel = new CategoriesViewModel();
+		}
 
 
-        [HttpGet]
-
-        public ActionResult Create()
-        {
-            ViewBag.Title = "Opret Kategori";
-            ViewBag.ACTIONMETHOD = "Create";
-            ViewBag.ButtonTitle = "Opret";
-            return View("Form", viewModel);
-        }
+		// GET: Categories
+		public ActionResult Index()
+		{
+			return View("Index", _viewModel);
+		}
 
 
-        [HttpPost]
-        public ActionResult Create(CategoryDto Category)
-        {
-            if (!ModelState.IsValid)
-            {
-             return  RedirectToAction("Create", viewModel);
-            }
+		[HttpGet]
+
+		public ActionResult Create()
+		{
+
+			_viewModel.UpdateView("Opret Kategori", "Create", "Opret");
+			return View("Form", _viewModel);
+		}
 
 
-            viewModel.categoryController.CreateCategory(Category.Name);
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Create(CategoryDto Category)
+		{
+			if (!ModelState.IsValid)
+			{
+				return RedirectToAction("Create", _viewModel);
+			}
 
-            return RedirectToAction("Index");   
-        }
+			Category.CategoryId = Guid.NewGuid();
+			_viewModel.categoryController.CreateCategory(Category);
 
-        [HttpGet]
-        public ActionResult Update(Guid id)
-        {
-            viewModel.Category = viewModel.categoryController.GetCategory(id);
+			return RedirectToAction("Index");
+		}
 
-            ViewBag.Title = $"Opdatere Kategori";
-            ViewBag.ACTIONMETHOD = "UPDATE";
-            ViewBag.ButtonTitle = "Opdatere";
+		[HttpGet]
+		public ActionResult Update(Guid id)
+		{
+			_viewModel.Category = _viewModel.categoryController.GetCategory(id);
+			_viewModel.UpdateView("Opdatere Kategori", "Update", "Opdatere");
 
-            return View("Form",viewModel);
-        }
+			return View("Form", _viewModel);
+		}
 
-        [HttpPost]
-        public ActionResult Update(Guid id, CategoryDto category)
-        {
-            if (!ModelState.IsValid)
-            {
-                return RedirectToAction("Update");
-            }
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Update(Guid id, CategoryDto category)
+		{
+			if (!ModelState.IsValid)
+			{
+				return RedirectToAction("Update");
+			}
 
-            viewModel.categoryController.UpdateCategory(id, category.Name);
+			category.CategoryId = id;
+			_viewModel.categoryController.UpdateCategory(category);
 
-            return RedirectToAction("Index");
-        }
+			return RedirectToAction("Index");
+		}
 
 
-        public ActionResult Delete(Guid id)
-        {
-           bool deleted =  viewModel.categoryController.DeleteCategory(id);
+		public ActionResult Delete(Guid id)
+		{
+			bool deleted = _viewModel.categoryController.DeleteCategory(id);
 
-            if (!deleted)
-            {
-                viewModel.ErrorMessage = "Du skal slette produkterne i den valgte kategori før du kan slette kategorien";
-                return View("Index", viewModel);
-            }
-            return RedirectToAction("Index");
-        }
+			if (!deleted)
+			{
+				_viewModel.ErrorMessage = "Du skal slette produkterne i den valgte kategori før du kan slette kategorien";
+				return View("Index", _viewModel);
+			}
+			return RedirectToAction("Index");
+		}
 
-       
-    }
+
+	}
 }

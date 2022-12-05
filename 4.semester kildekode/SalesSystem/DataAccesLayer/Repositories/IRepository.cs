@@ -8,15 +8,15 @@ using DataAccessLayer.Model;
 
 namespace DataAccessLayer.Repositories.ProductRepository
 {
-    internal interface IRepository<DTO, Entity>
-    {
-        IEnumerable<DTO> GetEntities();
-        DTO GetEntityById(Guid id);
+	internal interface IRepository<DTO, Entity>
+	{
+		IEnumerable<DTO> GetEntities();
+		DTO GetEntityById(Guid id);
 
-        void InsertEntity(Entity entity);
-        bool DeleteEntity(Guid id);
-        void UpdateEntity(Entity entity);
-        void Save(DatabaseContext context);
-    }
+		void InsertEntity(Entity entity);
+		bool DeleteEntity(Guid id);
+		void UpdateEntity(Entity entity);
+		void Save(DatabaseContext context);
+	}
 
 }

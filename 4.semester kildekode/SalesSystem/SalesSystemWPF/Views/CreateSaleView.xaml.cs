@@ -23,9 +23,9 @@ namespace SalesSystem.Views
     /// </summary>
     public partial class CreateSaleView : UserControl
     {
-        private readonly CategoryController categoryController = CategoryController.GetController();
-        private readonly ProductController productController = ProductController.GetController();
-        private readonly SaleController saleController = SaleController.GetController();
+        private readonly CategoryBLL categoryController = CategoryBLL.GetController();
+        private readonly ProductBLL productController = ProductBLL.GetController();
+        private readonly SaleBLL saleController = SaleBLL.GetController();
         private SaleDetailDto newSale;
 
         public CreateSaleView()

@@ -24,7 +24,7 @@ namespace SalesSystem.Views
     /// </summary>
     public partial class CategoryView : UserControl
     {
-        private CategoryController controller = CategoryController.GetController();
+        private CategoryBLL controller = CategoryBLL.GetController();
         private CategoryWindow window;
 
         public CategoryView()
@@ -52,8 +52,7 @@ namespace SalesSystem.Views
 
         private void CreateCategoryEventHandler(CategoryWindow window)
         {
-            string name = window.CategoryName;
-            controller.CreateCategory(name);
+            controller.CreateCategory(window.category);
         }
 
         private void UpdateCategoryButton_Click(object sender, RoutedEventArgs e)
@@ -83,8 +82,7 @@ namespace SalesSystem.Views
 
         private void UpdateProductHandler(CategoryWindow window, CategoryDto category)
         {
-            string name = window.CategoryName;
-            controller.UpdateCategory(category.CategoryId, name);  
+            controller.UpdateCategory(category);  
         }
 
         private void DeleteCategoryButton_Click(object sender, RoutedEventArgs e)

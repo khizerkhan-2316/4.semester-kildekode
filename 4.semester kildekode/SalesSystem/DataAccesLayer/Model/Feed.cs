@@ -27,7 +27,7 @@ namespace DataAccessLayer.Model
 		public int? Limit { get; set; }
 
 		[Required(AllowEmptyStrings =false), MinLength(5), MaxLength(100)]
-		public string link { get; set; }
+		public string Link { get; set; }
 
 		[Required]
 		public virtual List<FeedAttribute> Attributes { get; set; }

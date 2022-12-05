@@ -25,8 +25,8 @@ namespace SalesSystem.Views
     /// </summary>
     public partial class ProductView : UserControl
     {
-        private ProductController controller = ProductController.GetController();
-        private PictureController pictureController = PictureController.GetController();    
+        private ProductBLL controller = ProductBLL.GetController();
+        private PictureBLL pictureController = PictureBLL.GetController();    
         ProductWindow window;
         public ProductView()
         {
@@ -107,26 +107,15 @@ namespace SalesSystem.Views
 
         private void updateProductHandler(ProductDetailDto productDetailDto)
         {
-            string name = productDetailDto.Name;
-            string description = productDetailDto.Description;
-            double price = productDetailDto.Price;
-            double? salePrice = productDetailDto.SalePrice;
-			PictureDto defaultPicture = pictureController.GetDefaultImage();
-
-			controller.UpdateProductWithPicture(productDetailDto.ProductId, name, description, price, salePrice, productDetailDto.Category, defaultPicture);
+            controller.UpdateProduct(productDetailDto);
         }
 
 
-        private void createProductEventHandler(ProductDetailDto productDetailDto)
-        {
-            string name = productDetailDto.Name;
-            string description = productDetailDto.Description;
-            double price = productDetailDto.Price;
-            double? salePrice = productDetailDto.SalePrice;
-            CategoryDto category = productDetailDto.Category;
-            PictureDto defaultPicture = pictureController.GetDefaultImage();
+        private void createProductEventHandler(ProductDetailDto productDetailDto) {
 
-			controller.CreateProductWithPicture(name, description, price, salePrice, category, defaultPicture);
+			productDetailDto.Picture =  pictureController.GetDefaultImage();
+			controller.CreateProduct(productDetailDto);
+		
         }
 
         private void DeleteProductButton_Click(object sender, RoutedEventArgs e)

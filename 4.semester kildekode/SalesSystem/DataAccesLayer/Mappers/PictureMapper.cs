@@ -8,7 +8,7 @@ using DataAccessLayer.Model;
 
 namespace DataAccessLayer.Mappers
 {
-	public class PictureMapper
+	public  class PictureMapper
 	{
 
 		public PictureDto Map(Picture picture)

@@ -19,8 +19,39 @@ namespace DataAccessLayer.Mappers
 				Description = feed.Description,
 				Format = feed.Format,
 				Limit = feed.Limit,
-				Link = feed.link
+				Link = feed.Link
 			};
+		}
+
+		public Feed MapDtoDetailToEntity(FeedDetailDto feed)
+		{
+			Feed newFeed = new Feed();
+			newFeed.Title = feed.Title;
+			newFeed.Description = feed.Description;
+			newFeed.Format = feed.Format;
+			newFeed.Limit = feed.Limit;
+			newFeed.Link = $"{feed.Link}api/Feed/Details/{newFeed.FeedId}";
+			newFeed.Attributes = feed.Attributes.ConvertAll<FeedAttribute>((FeedAttributeDto attribute) =>
+			{
+				return new FeedAttribute
+				{
+					FeedAttributeId = Guid.NewGuid(),
+					Attribute = attribute.Attribute,
+				};
+			});
+
+			newFeed.Categories = feed.Categories.ConvertAll<FeedCategory>((FeedCategoryDto category) =>
+			{
+
+				return new FeedCategory
+				{
+					FeedCategoryId = Guid.NewGuid(),
+					FeedCategoryName = category.FeedCategoryName,
+					CategoryId = category.CategoryId,
+				};
+			});
+
+			return newFeed;
 		}
 
 		public FeedDetailDto MapFeedDetails(Feed feed)
@@ -32,7 +63,7 @@ namespace DataAccessLayer.Mappers
 				Description = feed.Description,
 				Format = feed.Format,
 				Limit = feed.Limit,
-				Link = feed.link,
+				Link = feed.Link,
 				Attributes = feed.Attributes.ToList().ConvertAll<FeedAttributeDto>((FeedAttribute attribute) =>
 				{
 					return new FeedAttributeDto

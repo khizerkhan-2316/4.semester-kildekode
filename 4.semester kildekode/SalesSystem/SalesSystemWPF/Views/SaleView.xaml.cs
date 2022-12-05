@@ -23,7 +23,7 @@ namespace SalesSystem.Views
     /// </summary>
     public partial class SaleView : UserControl
     {
-        private SaleController controller = SaleController.GetController();
+        private SaleBLL controller = SaleBLL.GetController();
 
         public SaleView()
         {

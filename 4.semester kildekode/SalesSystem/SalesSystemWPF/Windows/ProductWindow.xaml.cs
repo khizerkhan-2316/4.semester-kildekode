@@ -25,7 +25,7 @@ namespace SalesSystem
     /// </summary>
     public partial class ProductWindow : Window
     {
-        private CategoryController categoryController = CategoryController.GetController();
+        private CategoryBLL categoryController = CategoryBLL.GetController();
         private List<CategoryDto> categories; 
 
         public ProductDetailDto ProductDetailDto {get; set;}
@@ -41,7 +41,9 @@ namespace SalesSystem
             this.categories = categoryController.GetCategories();
             this.CategoriesComboBox.ItemsSource = this.categories;
 
-        }
+            ProductDetailDto = new ProductDetailDto();
+
+		}
 
         public ProductWindow(ProductDetailDto productDetailDto)
         {
@@ -78,6 +80,8 @@ namespace SalesSystem
             {
 
                 initializeData(name, description, price, salePrice);
+
+
                 this.DialogResult = true;
                 this.Close();
 

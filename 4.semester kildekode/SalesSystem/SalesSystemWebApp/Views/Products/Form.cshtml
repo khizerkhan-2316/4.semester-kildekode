@@ -1,12 +1,12 @@
 ﻿
 @model SalesSystemWebApp.ViewModels.ProductsViewModel
 @{
-    ViewBag.Title = ViewBag.Title;
+    ViewBag.Title = Model.Title;
 }
 
-@Html.Partial("_PageHeading", (string)ViewBag.Title)
+@Html.Partial("_PageHeading",(string) Model.Title)
 
-@using (Html.BeginForm((string)ViewBag.ACTIONMETHOD, "Products", FormMethod.Post, new {enctype = "multipart/form-data"}))
+@using (Html.BeginForm((string) Model.ActionMethod, "Products", FormMethod.Post, new {enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
 
@@ -47,7 +47,16 @@
     </div>
 
     <div class="form-group">
-        @Html.HiddenFor(model => model.Product.Category.Name)
+        @{
+            if (Model.Product.Category != null)
+            {
+                @Html.HiddenFor(model => model.Product.Category.Name)
+            } else
+            {
+                <input type="hidden" name="Product.Category.Name" id="Product_Category_Name" />
+            }
+        }
+
         @Html.LabelFor(model => model.Product.Category)
         @Html.DropDownListFor(model => model.Product.Category.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), "---Vælg Kategori---", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Product.Category.CategoryId, "", new { @class = "text-danger" })
@@ -63,7 +72,7 @@
     </div>
 
 
-    <button class="btn btn-primary" type="submit" value="Submit">@ViewBag.ButtonTitle</button>
+    <button class="btn btn-primary" type="submit" value="Submit">@Model.ButtonTitle</button>
     @Html.ActionLink("Tilbage", "Index", null, new { @class = "btn btn-primary", @style = "margin-left:10px;" })
 
 

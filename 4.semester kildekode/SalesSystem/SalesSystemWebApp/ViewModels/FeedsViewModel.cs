@@ -11,11 +11,15 @@ namespace SalesSystemWebApp.ViewModels
 	public class FeedsViewModel
 	{
 
-		public readonly FeedController feedController = FeedController.GetController();
-		public readonly CategoryController categoryController = CategoryController.GetController();
+		public readonly FeedBLL feedController = FeedBLL.GetController();
+		public readonly CategoryBLL categoryController = CategoryBLL.GetController();
 
 
-		public FeedDetailDto Feed {get; set;}
+		public FeedDetailDto Feed { get; set; }
+
+		public List<string> SelectedAttributes { get; set; }	
+
+		public List<Guid> SelectedCategories { get; set; }	
 
 		public List<FeedDto> Feeds { get; set; }
 
@@ -25,7 +29,20 @@ namespace SalesSystemWebApp.ViewModels
 
 		public List<CategoryDto> Categories { get; set; }
 
+		public List<SelectListItem> Attributes { get; set; }
+
+		public List<SelectListItem> FeedCategories { get; set; }
+
+
 		public int? Limit { get; set; }
+
+		public string Title { get; set; }
+
+		public string ActionName { get; set; }
+
+		public string ButtonTitle { get; set; }	
+
+		public string ErrorMessage { get; set; }	
 
 
 
@@ -35,6 +52,9 @@ namespace SalesSystemWebApp.ViewModels
 		public FeedsViewModel()
 		{
 			Feed = new FeedDetailDto();
+			SelectedAttributes = new List<string>();
+			SelectedCategories = new List<Guid>();
+
 			Feeds = feedController.GetFeeds();
 			Formats = new List<SelectListItem>
 			{
@@ -43,31 +63,42 @@ namespace SalesSystemWebApp.ViewModels
 
 			};
 
+			Attributes = new List<SelectListItem>();
+
 			Product = new ProductDetailDto();
 			Categories = categoryController.GetCategories();
-			InitializeFeedAttributes();
-			InitializeFeedCategories();
+			InitializeAttributes();
+			initializeFeedCategories();
+			ErrorMessage = "";
 		}
 
 
 
-		private void InitializeFeedAttributes()
+
+		private void InitializeAttributes()
 		{
-			List<FeedAttributeDto> attributes = new List<FeedAttributeDto>();
 
-			Product.GetType().GetProperties().ToList().ForEach(info => attributes.Add(new FeedAttributeDto {FeedAttributeId = Guid.NewGuid(), Attribute = info.Name }));
-
-			Feed.Attributes= attributes;
+			Product.GetType().GetProperties().ToList().ForEach(info => Attributes.Add(new SelectListItem { Text = info.Name, Value = info.Name }));
 		}
 
-		private void InitializeFeedCategories()
+		private void initializeFeedCategories()
 		{
-			List<FeedCategoryDto> categories = new List<FeedCategoryDto>();
+			FeedCategories = new List<SelectListItem>();
+			Categories.ForEach(category => FeedCategories.Add(new SelectListItem { Text = category.Name, Value = category.CategoryId.ToString() }));
+		}
 
-			Categories.ForEach(category => categories.Add(new FeedCategoryDto { FeedCategoryId = Guid.NewGuid(), FeedCategoryName = category.Name, CategoryId = category.CategoryId }));
+	   public void UpdateView(string title, string actionName, string buttonTitle)
+		{
+			Title = title;
+			ActionName = actionName;
+			ButtonTitle = buttonTitle;
+		}
 
-			Feed.Categories = categories;
 
+		public void InitializeSelectedItems()
+		{
+			Feed.Attributes.ForEach(attribute => SelectedAttributes.Add(attribute.Attribute));
+			Feed.Categories.ForEach(category => SelectedCategories.Add(category.CategoryId));
 		}
 
 

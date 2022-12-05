@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
 	public class SaleController : ApiController
 
     {
-        private readonly BusinessLayer.SaleController controller = BusinessLayer.SaleController.GetController();
+        private readonly BusinessLayer.SaleBLL controller = BusinessLayer.SaleBLL.GetController();
 
 
 		[HttpPost]
