@@ -1,4 +1,8 @@
 ﻿
+@using SalesSystemWebApp.ViewModels
+
+@model CategoriesViewModel
+
 @{
     ViewBag.Title = Model.Title;
 }
@@ -6,7 +10,6 @@
 @Html.Partial("_PageHeading", (string)Model.Title)
 
 
-@model SalesSystemWebApp.ViewModels.CategoriesViewModel
 
 
 @using (Html.BeginForm((string)Model.ActionMethod, "Categories", FormMethod.Post))

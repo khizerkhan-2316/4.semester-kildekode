@@ -1,41 +1,38 @@
-﻿using DataAccessLayer.Model;
-using DataAccessLayer.Repositories;
+﻿using DataAccessLayer.Repositories;
 using DataTransferObjects.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class CategoryBLL
-    {
+	public class CategoryBLL
+	{
 
-        private static CategoryBLL instance;
+		private static CategoryBLL instance;
 
-        private readonly CategoryRepository repository;
+		private readonly CategoryRepository repository;
 
-        private CategoryBLL()
-        {
-            repository = new CategoryRepository();
-        }
+		private CategoryBLL()
+		{
+			repository = new CategoryRepository();
+		}
 
-        public static CategoryBLL GetController()
-        {
-            if(instance == null)
-            {
-                instance = new CategoryBLL();
-            }
+		public static CategoryBLL GetController()
+		{
+			if (instance == null)
+			{
+				instance = new CategoryBLL();
+			}
 
-            return instance;
-        }
+			return instance;
+		}
 
-        public void CreateCategory(CategoryDto category)
-        {
-           
-            repository.InsertEntity(category);
-        }
+		public void CreateCategory(CategoryDto category)
+		{
+
+			repository.InsertEntity(category);
+		}
 
 		public CategoryDto GetCategory(Guid id)
 		{
@@ -54,16 +51,16 @@ namespace BusinessLayer
 
 
 		public void UpdateCategory(CategoryDto category)
-        {
-            repository.UpdateEntity(category);
-        }
+		{
+			repository.UpdateEntity(category);
+		}
 
-        public bool DeleteCategory(Guid id)
-        {
-           return repository.DeleteEntity(id);
-        }
+		public bool DeleteCategory(Guid id)
+		{
+			return repository.DeleteEntity(id);
+		}
 
-      
 
-    }
+
+	}
 }

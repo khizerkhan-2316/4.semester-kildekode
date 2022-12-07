@@ -1,4 +1,9 @@
 ﻿
+@using SalesSystemWebApp.ViewModels
+@using DataTransferObjects.Models
+
+@model SalesViewModel
+
 
 @Styles.Render("~/css/modal.css")
 
@@ -9,10 +14,9 @@
 
 @section Styles{
 
-    <link href="~/css/modal.css" rel="stylesheet"/>
+    <link href="~/css/modal.css" rel="stylesheet" />
 }
 
-@model SalesSystemWebApp.ViewModels.SalesViewModel
 
 
 @Html.Partial("_Pageheading", "Salg")
@@ -25,7 +29,7 @@
 <table style="margin-top: 20px;" class="table table-bordered">
     @Html.Partial("_TableHeader", new List<string> { "Billede", "Navn", "Beskrivelse", "Pris", "Salgspris", "Kategori", "Tilføj" })
 
-    @foreach (DataTransferObjects.Models.ProductDetailDto product in Model.Products)
+    @foreach (ProductDetailDto product in Model.Products)
     {
         <tr class="product-details-row">
 

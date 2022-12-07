@@ -1,16 +1,21 @@
 ﻿
+@using SalesSystemWebApp.ViewModels
+
+
+@model FeedsViewModel
+
+
 @{
     ViewBag.Title = (string)Model.Title;
 }
 
-@model SalesSystemWebApp.ViewModels.FeedsViewModel
 
 
 @Html.Partial("_PageHeading", (string)Model.Title)
 
 
 
-@using (Html.BeginForm((string) Model.ActionName, "Feeds", FormMethod.Post))
+@using (Html.BeginForm((string)Model.ActionName, "Feeds", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -50,15 +55,15 @@
 
     <label>Vælg attributter som skal inkluderes i feedet</label>
     <div id="properties-wrapper" class="d-flex">
-        @foreach (var item in Model.Attributes)
+        @foreach (SelectListItem item in Model.Attributes)
         {
             if (item.Text != "ProductId")
             {
                 <div class="form-group pl-2">
-                  <label>
-                      <input type="checkbox" name="Attributes" value="@item.Value" @if (Model.SelectedAttributes.Contains(item.Value)) { <text> checked </text> }/>
-                      @item.Text
-                  </label>
+                    <label>
+                        <input type="checkbox" name="Attributes" value="@item.Value" @if (Model.SelectedAttributes.Contains(item.Value)) { <text> checked </text> } />
+                        @item.Text
+                    </label>
                 </div>
             }
 
@@ -68,11 +73,11 @@
     <label>Vælg de kategorier som du vil have produkter skal medtages for</label>
     <div id="categories-wrapper" class="d-flex">
 
-        @foreach (var item in Model.FeedCategories)
+        @foreach (SelectListItem item in Model.FeedCategories)
         {
             <div class="form-group pl-2">
                 <label>
-                    <input type="checkbox" name="FeedCategories" value="@item.Value" @if (Model.SelectedCategories.Contains(new Guid(item.Value))) { <text> checked </text>  } />
+                    <input type="checkbox" name="FeedCategories" value="@item.Value" @if (Model.SelectedCategories.Contains(new Guid(item.Value))) { <text> checked </text> } />
                     @item.Text
                 </label>
             </div>
@@ -80,15 +85,10 @@
     </div>
 
 
-    <!--
-        <button id="feed-submit-btn" class="btn btn-success">Opret</button>
+    <div class="form-group">
 
-    -->
-
-<div class="form-group">
-
-    <p class="text-danger">@Html.DisplayFor(model => model.ErrorMessage)</p> 
-</div>
+        <p class="text-danger">@Html.DisplayFor(model => model.ErrorMessage)</p>
+    </div>
 
     <button type="submit" class="btn btn-primary">@Model.ButtonTitle</button>
     @Html.ActionLink("Tilbage", "Index", null, new { @class = "btn btn-primary" })
@@ -99,5 +99,4 @@
 @section Scripts {
 
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript" src="~/js/Feed.js"></script>
 }  

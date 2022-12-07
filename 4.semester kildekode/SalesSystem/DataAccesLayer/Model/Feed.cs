@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Model
 {
@@ -26,7 +22,7 @@ namespace DataAccessLayer.Model
 		[Range(1, int.MaxValue)]
 		public int? Limit { get; set; }
 
-		[Required(AllowEmptyStrings =false), MinLength(5), MaxLength(100)]
+		[Required(AllowEmptyStrings = false), MinLength(5), MaxLength(100)]
 		public string Link { get; set; }
 
 		[Required]
@@ -38,13 +34,13 @@ namespace DataAccessLayer.Model
 		[Required, DataType(DataType.DateTime)]
 		public DateTime BuildDateTime { get; set; }
 
-		public Feed() 
+		public Feed()
 		{
 			FeedId = Guid.NewGuid();
 			Attributes = new List<FeedAttribute>();
 			Categories = new List<FeedCategory>();
 			BuildDateTime = DateTime.Now;
-		
-		}	
+
+		}
 	}
 }

@@ -1,12 +1,14 @@
 ﻿
-@model SalesSystemWebApp.ViewModels.ProductsViewModel
+@using SalesSystemWebApp.ViewModels
+
+@model ProductsViewModel
 @{
     ViewBag.Title = Model.Title;
 }
 
-@Html.Partial("_PageHeading",(string) Model.Title)
+@Html.Partial("_PageHeading", (string)Model.Title)
 
-@using (Html.BeginForm((string) Model.ActionMethod, "Products", FormMethod.Post, new {enctype = "multipart/form-data"}))
+@using (Html.BeginForm((string)Model.ActionMethod, "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -51,7 +53,8 @@
             if (Model.Product.Category != null)
             {
                 @Html.HiddenFor(model => model.Product.Category.Name)
-            } else
+            }
+            else
             {
                 <input type="hidden" name="Product.Category.Name" id="Product_Category_Name" />
             }
@@ -66,8 +69,8 @@
 
     <div class="form-group">
 
-       @Html.LabelFor(model => model.Product.Picture.ImagePath)
-        <input class="form-control" type="file" name="Product.Picture.ImageFile"/>
+        @Html.LabelFor(model => model.Product.Picture.ImagePath)
+        <input class="form-control" type="file" name="Product.Picture.ImageFile" />
         @Html.ValidationMessageFor(model => model.Product.Picture.ImagePath)
     </div>
 

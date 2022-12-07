@@ -1,126 +1,115 @@
 ﻿using BusinessLayer;
 using DataTransferObjects.Models;
 using SalesSystem.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SalesSystem.Views
 {
-    /// <summary>
-    /// Interaction logic for CategoryView.xaml
-    /// </summary>
-    public partial class CategoryView : UserControl
-    {
-        private CategoryBLL controller = CategoryBLL.GetController();
-        private CategoryWindow window;
+	/// <summary>
+	/// Interaction logic for CategoryView.xaml
+	/// </summary>
+	public partial class CategoryView : UserControl
+	{
+		private CategoryBLL controller = CategoryBLL.GetController();
+		private CategoryWindow window;
 
-        public CategoryView()
-        {
-            InitializeComponent();
-            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-            CategoryListBox.ItemsSource = controller.GetCategories();
-            Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
-        }
+		public CategoryView()
+		{
+			InitializeComponent();
+			Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+			CategoryListBox.ItemsSource = controller.GetCategories();
+			Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+		}
 
-        private void CreateCategoryButton_Click(object sender, RoutedEventArgs e)
-        {
-            window = new CategoryWindow();
-            window.ShowDialog();
-
-
-            if ((bool)window.DialogResult)
-            {
-                CreateCategoryEventHandler(window);
-                MessageBox.Show("Kategori oprettet!");
-                this.CategoryListBox.ItemsSource = controller.GetCategories();
-
-            }
-        }
-
-        private void CreateCategoryEventHandler(CategoryWindow window)
-        {
-            controller.CreateCategory(window.category);
-        }
-
-        private void UpdateCategoryButton_Click(object sender, RoutedEventArgs e)
-        {
-            CategoryDto selectedCategory = (CategoryDto)this.CategoryListBox.SelectedItem;
-            int index = this.CategoryListBox.SelectedIndex;
-
-            if(selectedCategory == null)
-            {
-                MessageBox.Show("Vælg en kategori fra listen som du vil opdatere!");
-                return;
-            }
-
-            this.window = new CategoryWindow(selectedCategory);
-            this.window.ShowDialog();
-
-            if ((bool)window.DialogResult)
-            {
-                UpdateProductHandler(window, selectedCategory);
-                MessageBox.Show("Kategori Opdateret!");
-                this.CategoryListBox.ItemsSource = controller.GetCategories();
-                this.CategoryListBox.SelectedIndex = index;
-
-            }
-        }
+		private void CreateCategoryButton_Click(object sender, RoutedEventArgs e)
+		{
+			window = new CategoryWindow();
+			window.ShowDialog();
 
 
-        private void UpdateProductHandler(CategoryWindow window, CategoryDto category)
-        {
-            controller.UpdateCategory(category);  
-        }
+			if ((bool)window.DialogResult)
+			{
+				CreateCategoryEventHandler(window);
+				MessageBox.Show("Kategori oprettet!");
+				this.CategoryListBox.ItemsSource = controller.GetCategories();
 
-        private void DeleteCategoryButton_Click(object sender, RoutedEventArgs e)
-        {
+			}
+		}
 
-            CategoryDto selectedCategory = (CategoryDto)this.CategoryListBox.SelectedItem;
+		private void CreateCategoryEventHandler(CategoryWindow window)
+		{
+			controller.CreateCategory(window.category);
+		}
 
-            if(selectedCategory == null)
-            {
-                MessageBox.Show("Vælg en kategori fra listen");
-                return;
-            }
+		private void UpdateCategoryButton_Click(object sender, RoutedEventArgs e)
+		{
+			CategoryDto selectedCategory = (CategoryDto)this.CategoryListBox.SelectedItem;
+			int index = this.CategoryListBox.SelectedIndex;
 
-           bool deleted = controller.DeleteCategory(selectedCategory.CategoryId);
+			if (selectedCategory == null)
+			{
+				MessageBox.Show("Vælg en kategori fra listen som du vil opdatere!");
+				return;
+			}
 
-            if (!deleted)
-            {
-                MessageBox.Show("Slet alle produkter som har denne kategori først!");
-                return;
-            } else
-            {
-                MessageBox.Show("Kategorien er slettet!");
-                this.CategoryListBox.ItemsSource = controller.GetCategories();
-                this.CategoryListBox.SelectedIndex = 0;
-            }
+			this.window = new CategoryWindow(selectedCategory);
+			this.window.ShowDialog();
 
-        }
+			if ((bool)window.DialogResult)
+			{
+				UpdateProductHandler(window, selectedCategory);
+				MessageBox.Show("Kategori Opdateret!");
+				this.CategoryListBox.ItemsSource = controller.GetCategories();
+				this.CategoryListBox.SelectedIndex = index;
 
-        private void CategoryListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            CategoryDto category = (CategoryDto)this.CategoryListBox.SelectedItem;
+			}
+		}
 
-            if(category != null)
-            {
-                CategoryDetailDto categoryDetailDto = controller.GetCategoryDetails(category.CategoryId);
-                this.ProductsListBox.ItemsSource = categoryDetailDto.Products;
-            }
 
-        }
-    }
+		private void UpdateProductHandler(CategoryWindow window, CategoryDto category)
+		{
+			controller.UpdateCategory(category);
+		}
+
+		private void DeleteCategoryButton_Click(object sender, RoutedEventArgs e)
+		{
+
+			CategoryDto selectedCategory = (CategoryDto)this.CategoryListBox.SelectedItem;
+
+			if (selectedCategory == null)
+			{
+				MessageBox.Show("Vælg en kategori fra listen");
+				return;
+			}
+
+			bool deleted = controller.DeleteCategory(selectedCategory.CategoryId);
+
+			if (!deleted)
+			{
+				MessageBox.Show("Slet alle produkter som har denne kategori først!");
+				return;
+			}
+			else
+			{
+				MessageBox.Show("Kategorien er slettet!");
+				this.CategoryListBox.ItemsSource = controller.GetCategories();
+				this.CategoryListBox.SelectedIndex = 0;
+			}
+
+		}
+
+		private void CategoryListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			CategoryDto category = (CategoryDto)this.CategoryListBox.SelectedItem;
+
+			if (category != null)
+			{
+				CategoryDetailDto categoryDetailDto = controller.GetCategoryDetails(category.CategoryId);
+				this.ProductsListBox.ItemsSource = categoryDetailDto.Products;
+			}
+
+		}
+	}
 }

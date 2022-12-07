@@ -1,19 +1,16 @@
 ﻿using DataAccessLayer.Context;
 using DataAccessLayer.Mappers;
 using DataAccessLayer.Model;
-using DataAccessLayer.Repositories.ProductRepository;
 using DataTransferObjects.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-	public class CategoryRepository : IDisposable
+	public class CategoryRepository
 	{
 		private readonly CategoryMapper _mapper;
 
@@ -79,32 +76,6 @@ namespace DataAccessLayer.Repositories
 				return true;
 			}
 
-
-
-		}
-
-		private bool disposed = false;
-
-		protected virtual void Dispose(bool disposing, DatabaseContext context)
-		{
-			if (!this.disposed)
-			{
-				if (disposing)
-				{
-					context.Dispose();
-				}
-			}
-			this.disposed = true;
-		}
-
-		public void Dispose()
-		{
-			using (DatabaseContext context = new DatabaseContext())
-			{
-
-				Dispose(true, context);
-				GC.SuppressFinalize(this);
-			}
 		}
 
 

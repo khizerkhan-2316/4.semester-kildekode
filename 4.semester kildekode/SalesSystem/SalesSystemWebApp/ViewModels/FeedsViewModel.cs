@@ -3,7 +3,6 @@ using DataTransferObjects.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SalesSystemWebApp.ViewModels
@@ -17,9 +16,9 @@ namespace SalesSystemWebApp.ViewModels
 
 		public FeedDetailDto Feed { get; set; }
 
-		public List<string> SelectedAttributes { get; set; }	
+		public List<string> SelectedAttributes { get; set; }
 
-		public List<Guid> SelectedCategories { get; set; }	
+		public List<Guid> SelectedCategories { get; set; }
 
 		public List<FeedDto> Feeds { get; set; }
 
@@ -40,9 +39,9 @@ namespace SalesSystemWebApp.ViewModels
 
 		public string ActionName { get; set; }
 
-		public string ButtonTitle { get; set; }	
+		public string ButtonTitle { get; set; }
 
-		public string ErrorMessage { get; set; }	
+		public string ErrorMessage { get; set; }
 
 
 
@@ -87,7 +86,7 @@ namespace SalesSystemWebApp.ViewModels
 			Categories.ForEach(category => FeedCategories.Add(new SelectListItem { Text = category.Name, Value = category.CategoryId.ToString() }));
 		}
 
-	   public void UpdateView(string title, string actionName, string buttonTitle)
+		public void UpdateView(string title, string actionName, string buttonTitle)
 		{
 			Title = title;
 			ActionName = actionName;

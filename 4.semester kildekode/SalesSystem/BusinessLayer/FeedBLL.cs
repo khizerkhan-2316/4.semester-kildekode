@@ -1,14 +1,11 @@
-﻿using DataAccessLayer.Model;
-using DataAccessLayer.Repositories;
+﻿using DataAccessLayer.Repositories;
 using DataTransferObjects.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.ServiceModel.Syndication;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -202,7 +199,8 @@ namespace BusinessLayer
 			return products;
 		}
 
-		public void ModifyFeed(FeedDetailDto feed, List<string> attributes, List<string> feedCategories, List<CategoryDto> categories) {
+		public void ModifyFeed(FeedDetailDto feed, List<string> attributes, List<string> feedCategories, List<CategoryDto> categories)
+		{
 
 			List<FeedAttributeDto> feedAttributeDtos = new List<FeedAttributeDto>();
 			List<FeedCategoryDto> feedCategoryDtos = new List<FeedCategoryDto>();
@@ -221,7 +219,7 @@ namespace BusinessLayer
 			feed.Attributes = feedAttributeDtos;
 			feed.Categories = feedCategoryDtos;
 
-	
+
 		}
 
 	}

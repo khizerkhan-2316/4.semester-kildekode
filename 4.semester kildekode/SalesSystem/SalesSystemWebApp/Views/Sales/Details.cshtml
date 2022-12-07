@@ -1,9 +1,14 @@
 ﻿
+@using SalesSystemWebApp.ViewModels
+@using DataTransferObjects.Models
+
+@model SalesViewModel
+
+
 @{
     ViewBag.Title = "Details";
 }
 
-@model SalesSystemWebApp.ViewModels.SalesViewModel
 
 @Html.Partial("_PageHeading", "Salgsdetaljer")
 
@@ -35,7 +40,7 @@
     @Html.Partial("_TableHeader", new List<string> { "Salgslinje ID", "Total salgslinje pris", "Antal", "Produkets navn", "Kategori" })
 
 
-    @foreach (DataTransferObjects.Models.SalesLineDto saleline in Model.SaleDetails.SalesLines)
+    @foreach (SalesLineDto saleline in Model.SaleDetails.SalesLines)
     {
         @Html.Partial("_SaleLine", saleline)
     }

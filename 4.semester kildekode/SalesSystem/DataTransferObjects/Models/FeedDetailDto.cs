@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace DataTransferObjects.Models
 {
@@ -34,7 +30,7 @@ namespace DataTransferObjects.Models
 		[Range(1, int.MaxValue, ErrorMessage = "Limit skal være på minimum 1")]
 		public int? Limit { get; set; }
 
-		
+
 		[MinLength(5, ErrorMessage = "Link skal være på minimum 5 karakter."), MaxLength(100, ErrorMessage = "Link skal være på maksismum 100 karakter.")]
 		public string Link { get; set; }
 

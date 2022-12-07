@@ -1,8 +1,10 @@
-﻿@model DataTransferObjects.Models.ProductDetailDto
+﻿@using DataTransferObjects.Models
+
+@model ProductDetailDto
 
 
-<tr style="margin-top: 100px;">
-  <td><img src=@Url.Content(Model.Picture.ImagePath) alt=@Model.Picture.Title width="150" /> </td>
+<tr>
+    <td><img src=@Url.Content(Model.Picture.ImagePath) alt=@Model.Picture.Title width="150" /> </td>
     <td> @Html.DisplayFor(Model => Model.Name)</td>
     <td>@Html.DisplayFor(Model => Model.Description) </td>
     <td>@Html.DisplayFor(Model => Model.Price)</td>

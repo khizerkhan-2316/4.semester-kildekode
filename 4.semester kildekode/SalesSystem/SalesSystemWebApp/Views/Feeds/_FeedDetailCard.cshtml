@@ -1,6 +1,7 @@
 ﻿
+@using SalesSystemWebApp.ViewModels
 
-@model SalesSystemWebApp.ViewModels.FeedsViewModel
+@model FeedsViewModel
 
 
 
@@ -24,12 +25,12 @@
 
         <div class="d-flex">
             <b>@Html.LabelFor(model => model.Feed.Link)</b>
-            <a class="link-primary" href="@(Model.Feed.Link != null? Model.Feed.Link : "")" style="margin-left: 10px;">@(Model.Feed.Link != null? Model.Feed.Link : "Ikke angivet")</a>
+            <a class="link-primary" target="_blank" href="@(Model.Feed.Link != null? Model.Feed.Link : "")" style="margin-left: 10px;">@(Model.Feed.Link != null? Model.Feed.Link : "Ikke angivet")</a>
         </div>
 
         <div class="d-flex">
             <b>@Html.LabelFor(model => model.Feed.BuildDateTime)</b>
-            <p style="margin-left: 10px;">@Html.DisplayFor(model=>model.Feed.BuildDateTime)</p>
+            <p style="margin-left: 10px;">@Html.DisplayFor(model => model.Feed.BuildDateTime)</p>
         </div>
 
     </div>

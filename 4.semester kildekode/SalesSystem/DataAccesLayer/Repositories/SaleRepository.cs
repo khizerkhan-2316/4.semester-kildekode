@@ -1,15 +1,12 @@
 ﻿using DataAccessLayer.Context;
 using DataAccessLayer.Mappers;
 using DataAccessLayer.Model;
-using DataAccessLayer.Repositories.ProductRepository;
 using DataTransferObjects.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {

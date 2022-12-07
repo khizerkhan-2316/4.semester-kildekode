@@ -1,7 +1,9 @@
 ﻿
-@model List<FeedAttributeDto>
 
 @using DataTransferObjects.Models
+
+@model List<FeedAttributeDto>
+
 
 <div class="card bg-light mb-3 overflow-scroll">
 
@@ -10,11 +12,11 @@
     </div>
 
     <div class="card-body">
-        
-           @foreach (FeedAttributeDto attribute in Model)
-            {
-                <p class="d-inline">@attribute.Attribute,</p>
-            }
+
+        @foreach (FeedAttributeDto attribute in Model)
+        {
+            <p class="d-inline">@attribute.Attribute,</p>
+        }
 
 
     </div>

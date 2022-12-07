@@ -1,54 +1,50 @@
-﻿using DataAccessLayer.Model;
-using DataAccessLayer.Repositories;
+﻿using DataAccessLayer.Repositories;
 using DataTransferObjects.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class SaleBLL
-    {
+	public class SaleBLL
+	{
 
-        private static SaleBLL instance;
-        private readonly SaleRepository repository;
+		private static SaleBLL instance;
+		private readonly SaleRepository repository;
 
 
-        private SaleBLL()
-        {
-            repository = new SaleRepository();
-        }
+		private SaleBLL()
+		{
+			repository = new SaleRepository();
+		}
 
-        public static SaleBLL GetController()
-        {
-            if(instance == null)
-            {
-                instance = new SaleBLL();
-            }
+		public static SaleBLL GetController()
+		{
+			if (instance == null)
+			{
+				instance = new SaleBLL();
+			}
 
-            return instance;
-        }
+			return instance;
+		}
 
-        public List<SaleDto> GetSales()
-        {
-            return repository.GetEntities();
-        }
+		public List<SaleDto> GetSales()
+		{
+			return repository.GetEntities();
+		}
 
-        public SaleDetailDto GetSaleDetails(Guid id)
-        {
-            return repository.GetEntityDetailsById(id);
-        }
+		public SaleDetailDto GetSaleDetails(Guid id)
+		{
+			return repository.GetEntityDetailsById(id);
+		}
 
-        public void CreateSale(SaleDetailDto dto)
-        {
-           repository.InsertEntity(dto);
-        }
+		public void CreateSale(SaleDetailDto dto)
+		{
+			repository.InsertEntity(dto);
+		}
 
-        public void DeleteSale(Guid id)
-        {
-            repository.DeleteEntity(id);
-        }
-    }
+		public void DeleteSale(Guid id)
+		{
+			repository.DeleteEntity(id);
+		}
+	}
 }

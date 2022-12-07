@@ -1,15 +1,12 @@
 ﻿using DataAccessLayer.Context;
 using DataAccessLayer.Mappers;
 using DataAccessLayer.Model;
-using DataAccessLayer.Repositories.ProductRepository;
 using DataTransferObjects.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -56,11 +53,6 @@ namespace DataAccessLayer.Repositories
 			throw new NotImplementedException();
 		}
 
-		public void Save(DatabaseContext context)
-		{
-			throw new NotImplementedException();
-		}
-
 		public string GetFeedType(Guid id)
 		{
 			using (DatabaseContext context = new DatabaseContext())
@@ -83,7 +75,7 @@ namespace DataAccessLayer.Repositories
 				entity.Link = $"{feed.Link}api/Feed/Details/{feed.FeedId}";
 
 				List<Guid> attributesIds = feedFromDb.Attributes.Select(a => a.FeedAttributeId).ToList();
-				List<Guid> categoriesIds = feedFromDb.Categories.Select(c => c.FeedCategoryId).ToList();	
+				List<Guid> categoriesIds = feedFromDb.Categories.Select(c => c.FeedCategoryId).ToList();
 
 				feedFromDb.Attributes = entity.Attributes;
 				feedFromDb.Categories = entity.Categories;
@@ -93,7 +85,7 @@ namespace DataAccessLayer.Repositories
 				context.Feeds.AddOrUpdate(feedFromDb);
 
 				attributesIds.ForEach(id => context.FeedAttributes.Remove(context.FeedAttributes.Find(id)));
-				categoriesIds.ForEach(id => context.FeedCategories.Remove(context.FeedCategories.Find(id)));	
+				categoriesIds.ForEach(id => context.FeedCategories.Remove(context.FeedCategories.Find(id)));
 
 				context.SaveChanges();
 			}

@@ -1,7 +1,8 @@
 ﻿
+@using DataTransferObjects.Models
+
 @model List<FeedCategoryDto>
 
-@using DataTransferObjects.Models
 
 <div class="card bg-light mb-3 overflow-scroll">
 
@@ -10,13 +11,13 @@
     </div>
 
     <div class="card-body">
-       
-            @foreach (FeedCategoryDto category in Model)
-            {
-                <p class="d-inline">@category.FeedCategoryName,</p>
-            }
 
-   
+        @foreach (FeedCategoryDto category in Model)
+        {
+            <p class="d-inline">@category.FeedCategoryName,</p>
+        }
+
+
 
     </div>
 

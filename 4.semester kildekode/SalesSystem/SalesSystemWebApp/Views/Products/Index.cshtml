@@ -1,15 +1,20 @@
 ﻿
+@using DataTransferObjects.Models
+@using SalesSystemWebApp.ViewModels
+
+@model ProductsViewModel
+
+
 @{
     ViewBag.Title = "Products";
 }
 
-@model SalesSystemWebApp.ViewModels.ProductsViewModel
 
 
 @helper SearchResultMessage(string message)
 {
 
-    if (Model.Products.Count == 0 && (Model.Query != "" || Model.Sort != "" ))
+    if (Model.Products.Count == 0 && (Model.Query != "" || Model.Sort != ""))
     {
         <h2>Ingen resultater på din søgning.</h2>
     }
@@ -19,6 +24,9 @@
 
 @Html.Partial("_PageHeading", "Administrere Produkter")
 
+
+
+
 @Html.ActionLink("Opret Produkt", "Create", null, new { @class = "btn btn-primary" })
 
 @Html.Partial("_SearchComponent", Model)
@@ -27,7 +35,7 @@
 
     @Html.Partial("_TableHeader", new List<string> { "Billede", "Navn", "Beskrivelse", "Pris", "Salgspris", "Kategori", "Opdatere", "Slet" })
 
-    @foreach (DataTransferObjects.Models.ProductDetailDto product in Model.Products)
+    @foreach (ProductDetailDto product in Model.Products)
     {
 
         @Html.Partial("_Product", product)

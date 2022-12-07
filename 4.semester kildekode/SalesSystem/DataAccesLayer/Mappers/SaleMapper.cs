@@ -1,12 +1,7 @@
-﻿using DataTransferObjects.Models;
-using System;
+﻿using DataAccessLayer.Model;
+using DataTransferObjects.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccessLayer.Model;
-using DataTransferObjects;
-using DataAccessLayer.Context;
 
 namespace DataAccessLayer.Mappers
 {

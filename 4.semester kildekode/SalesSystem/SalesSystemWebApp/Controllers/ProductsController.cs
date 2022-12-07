@@ -1,14 +1,7 @@
-﻿using BusinessLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using DataAccessLayer.Model;
+﻿using DataTransferObjects.Models;
 using SalesSystemWebApp.ViewModels;
-using DataTransferObjects.Models;
-using System.Net.NetworkInformation;
-using System.IO;
+using System;
+using System.Web.Mvc;
 
 namespace SalesSystemWebApp.Controllers
 {

@@ -1,24 +1,13 @@
 ﻿using BusinessLayer;
-using DataAccessLayer.Model;
 using DataTransferObjects.Models;
-using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json;
-using Swashbuckle.Swagger;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
-using System.Runtime.Serialization;
-using System.ServiceModel.Syndication;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Http.Results;
-using System.Web.UI.WebControls;
-using System.Xml;
 using WebAPI.Filters;
 
 namespace WebAPI.Controllers
@@ -54,7 +43,7 @@ namespace WebAPI.Controllers
 
 			if (!ModelState.IsValid)
 			{
-				return new HttpResponseMessage(HttpStatusCode.BadRequest);	
+				return new HttpResponseMessage(HttpStatusCode.BadRequest);
 			}
 
 
@@ -67,7 +56,7 @@ namespace WebAPI.Controllers
 		}
 
 
-		[HttpDelete]	
+		[HttpDelete]
 		public HttpResponseMessage Delete(Guid id)
 		{
 			feedBll.DeleteFeed(id);
@@ -89,7 +78,8 @@ namespace WebAPI.Controllers
 					Content = new StringContent(feedContent, Encoding.UTF8, "application/xml")
 				};
 
-			} else if(feedType == "json")
+			}
+			else if (feedType == "json")
 			{
 				return new HttpResponseMessage()
 				{

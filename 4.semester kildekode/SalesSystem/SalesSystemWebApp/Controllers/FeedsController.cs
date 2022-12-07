@@ -1,20 +1,11 @@
-﻿using BusinessLayer;
-using DataTransferObjects.Models;
-using Microsoft.Ajax.Utilities;
+﻿using DataTransferObjects.Models;
 using SalesSystemWebApp.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
-using System.ServiceModel.Syndication;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using System.Xml;
 
 namespace SalesSystemWebApp.Controllers
 {
@@ -65,11 +56,11 @@ namespace SalesSystemWebApp.Controllers
 
 
 			viewModel.feedController.ModifyFeed(feed, attributes.ToList(), feedCategories.ToList(), viewModel.Categories);
-		
+
 
 			using (HttpClient client = new HttpClient())
 			{
-			var response = await client.PostAsync("https://localhost:44357/api/Feed/", feed, new JsonMediaTypeFormatter());
+				var response = await client.PostAsync("https://localhost:44357/api/Feed/", feed, new JsonMediaTypeFormatter());
 			}
 
 			return RedirectToAction("Index");
@@ -80,7 +71,7 @@ namespace SalesSystemWebApp.Controllers
 		public ActionResult Update(Guid id)
 		{
 			viewModel.Feed = viewModel.feedController.GetFeedDetails(id);
-		    viewModel.InitializeSelectedItems();
+			viewModel.InitializeSelectedItems();
 
 			viewModel.UpdateView("Opdatere feed", "Update", "Opdatere");
 

@@ -1,20 +1,19 @@
 ﻿
 @using DataTransferObjects.Models
+@using SalesSystemWebApp.ViewModels
+
+@model CategoriesViewModel
+
 
 @{
     ViewBag.Title = "Categories";
 }
 
 
-@model SalesSystemWebApp.ViewModels.CategoriesViewModel
 
 @Html.Partial("_PageHeading", "Administere Kategorier")
 
-@helper RenderCategoryRow(CategoryDto category)
-{
 
-
-}
 
 @Html.ActionLink("Opret Kategori", "Create", null, new { @class = "btn btn-primary" })
 

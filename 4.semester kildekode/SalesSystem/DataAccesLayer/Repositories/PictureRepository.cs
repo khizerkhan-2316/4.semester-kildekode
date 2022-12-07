@@ -1,17 +1,13 @@
 ﻿using DataAccessLayer.Context;
 using DataAccessLayer.Mappers;
 using DataAccessLayer.Model;
-using DataAccessLayer.Repositories.ProductRepository;
 using DataTransferObjects.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-	public class PictureRepository : IRepository<PictureDto, Picture>, IDisposable
+	public class PictureRepository
 	{
 		private readonly PictureMapper _mapper;
 
@@ -19,25 +15,6 @@ namespace DataAccessLayer.Repositories
 		public PictureRepository()
 		{
 			_mapper = new PictureMapper();
-		}
-
-		public bool DeleteEntity(Guid id)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IEnumerable<PictureDto> GetEntities()
-		{
-			throw new NotImplementedException();
-		}
-
-		public PictureDto GetEntityById(Guid id)
-		{
-			using (DatabaseContext context = new DatabaseContext())
-			{
-				return _mapper.Map(context.Pictures.Find(id));
-
-			}
 		}
 
 		public void InsertEntity(Picture entity)
@@ -50,9 +27,13 @@ namespace DataAccessLayer.Repositories
 			}
 		}
 
-		public void UpdateEntity(Picture entity)
+		public PictureDto GetEntityById(Guid id)
 		{
-			throw new NotImplementedException();
+			using (DatabaseContext context = new DatabaseContext())
+			{
+				return _mapper.Map(context.Pictures.Find(id));
+
+			}
 		}
 
 		public PictureDto GetDefaultImage()
@@ -64,35 +45,18 @@ namespace DataAccessLayer.Repositories
 		}
 
 
-		public void Save(DatabaseContext context)
+		public void UpdateEntity(Picture entity)
 		{
-
-			context.SaveChanges();
-
+			throw new NotImplementedException();
 		}
 
-		private bool disposed = false;
 
-		protected virtual void Dispose(bool disposing, DatabaseContext context)
+		public bool DeleteEntity(Guid id)
 		{
-			if (!this.disposed)
-			{
-				if (disposing)
-				{
-					context.Dispose();
-				}
-			}
-			this.disposed = true;
+			throw new NotImplementedException();
 		}
 
-		public void Dispose()
-		{
-			using (DatabaseContext context = new DatabaseContext())
-			{
 
-				Dispose(true, context);
-				GC.SuppressFinalize(this);
-			}
-		}
+
 	}
 }

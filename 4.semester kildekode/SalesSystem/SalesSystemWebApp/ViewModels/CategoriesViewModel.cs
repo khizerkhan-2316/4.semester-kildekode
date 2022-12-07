@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using BusinessLayer;
+﻿using BusinessLayer;
 using DataTransferObjects.Models;
+using System.Collections.Generic;
 
 namespace SalesSystemWebApp.ViewModels
 {

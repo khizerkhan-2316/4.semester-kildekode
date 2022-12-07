@@ -1,42 +1,38 @@
-﻿using DataAccessLayer.Model;
-using DataAccessLayer.Repositories;
+﻿using DataAccessLayer.Repositories;
 using DataTransferObjects;
 using DataTransferObjects.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class ProductBLL
-    {
+	public class ProductBLL
+	{
 
-        private static ProductBLL productController;
-        private readonly ProductRespository repository;
+		private static ProductBLL productController;
+		private readonly ProductRespository repository;
 
 
-        private ProductBLL()
-        {
-            repository = new ProductRespository();
-        }
+		private ProductBLL()
+		{
+			repository = new ProductRespository();
+		}
 
-        public static ProductBLL GetController()
-        {
-            if(productController == null)
-            {
-                productController = new ProductBLL();
-            }
+		public static ProductBLL GetController()
+		{
+			if (productController == null)
+			{
+				productController = new ProductBLL();
+			}
 
-            return productController;
-        }
+			return productController;
+		}
 
-        public void CreateProduct(ProductDetailDto product)
-        {
+		public void CreateProduct(ProductDetailDto product)
+		{
 			repository.InsertEntity(product);
-        }
+		}
 
 		public ProductDto GetProduct(Guid id)
 		{
@@ -61,15 +57,15 @@ namespace BusinessLayer
 
 
 		public void UpdateProduct(ProductDetailDto product)
-        {
-            repository.UpdateEntity(product);
-        }
+		{
+			repository.UpdateEntity(product);
+		}
 
 
 		public void DeleteProduct(Guid id)
-        {
-            repository.DeleteEntity(id);
-        }
+		{
+			repository.DeleteEntity(id);
+		}
 
 		public List<ProductDetailDto> GetProductsBySearch(string query)
 		{
@@ -94,21 +90,21 @@ namespace BusinessLayer
 
 
 		public List<ProductDetailDto> GetProductsDetailsFromCategoryId(Guid categoryId)
-        {
+		{
 			return repository.GenericSearchMethod(p => p.Category.CategoryId == categoryId);
-        }
+		}
 
 
 		public List<ProductDetailDto> GetProductsByCategoryAndSort(Guid categoryId, string sortOption)
 		{
-			return GetSortedProducts(GetProductsDetailsFromCategoryId(categoryId), sortOption);	
+			return GetSortedProducts(GetProductsDetailsFromCategoryId(categoryId), sortOption);
 		}
 
 
 		public List<ProductDetailDto> GetProductsBySort(string sortOption)
-        {
+		{
 			return GetSortedProducts(repository.GetEntitiesDetails(), sortOption);
-        }
+		}
 
 
 		private List<ProductDetailDto> GetSortedProducts(List<ProductDetailDto> products, string sortOption)

@@ -1,10 +1,14 @@
 ﻿
+@using SalesSystemWebApp.ViewModels
+@using DataTransferObjects.Models
+
+@model FeedsViewModel
+
 
 @{
     ViewBag.Title = "Feeds";
 }
 
-@model SalesSystemWebApp.ViewModels.FeedsViewModel
 
 @Html.Partial("_PageHeading", "Administerer Productfeeds")
 
@@ -17,7 +21,7 @@
     @Html.Partial("_TableHeader", new List<string> { "Titel", "Beskrivelse", "Feed Format", "Limit", "Se detaljer", "Se feed", "Opdatere", "Slet" })
 
 
-    @foreach (DataTransferObjects.Models.FeedDto feed in Model.Feeds)
+    @foreach (FeedDto feed in Model.Feeds)
     {
         @Html.Partial("_Feed", feed)
     }
