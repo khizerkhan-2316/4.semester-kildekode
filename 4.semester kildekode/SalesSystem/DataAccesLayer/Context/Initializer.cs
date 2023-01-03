@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace DataAccessLayer.Context
 {
-	internal class Initializer : CreateDatabaseIfNotExists<DatabaseContext>
+	internal class Initializer : CreateDatabaseIfNotExists<DatabaseContext> // 2 other strategies: 1. DropCreateDatabaseAlways and 2.DropCreateDatabaseIfModelChanges
 	{
 
 

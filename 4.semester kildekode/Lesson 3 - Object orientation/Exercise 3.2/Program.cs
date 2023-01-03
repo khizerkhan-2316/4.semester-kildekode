@@ -42,6 +42,7 @@ namespace Exercise_3._2
             //            Console.WriteLine($"size in collection: {collection.Size()}");
 
 
+            collec
 
 
 

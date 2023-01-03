@@ -8,7 +8,7 @@ namespace Lesson_5___LINQ
 {
     internal class Program
     {
-
+        /* 
         static void printEvenNumbers(int i)
     {
         if(i % 2 == 0)
@@ -19,6 +19,7 @@ namespace Lesson_5___LINQ
  
         static void Main(string[] args)
         {
+         
 
 
             List<int> numbers = new List<int>();
@@ -28,7 +29,7 @@ namespace Lesson_5___LINQ
             {
                 numbers.Add(i);
             }
-            /*
+        
                     Action<int> writeEvenNumbers = printEvenNumbers;
 
                         numbers.ForEach(writeEvenNumbers);
@@ -36,10 +37,10 @@ namespace Lesson_5___LINQ
                         numbers.FindAll((int i) => i % 2 == 0);
 
                         numbers.FindLast((int num) => num > 15);
-                        numbers.FindLastIndex((int num) => num > 15); */
+                        numbers.FindLastIndex((int num) => num > 15); 
 
 
-            //IEnumerable<int> result = numbers.Where((int i) => i % 2 == 0);
+            IEnumerable<int> result = numbers.Where((int i) => i % 2 == 0);
             IEnumerable<int> result = numbers.Where((int i) => i.ToString().Length == 2);
 
 
@@ -47,8 +48,9 @@ namespace Lesson_5___LINQ
             {
                 Console.WriteLine(number);
             }
-
-            Console.ReadLine();
-        }
-    }
+    
+            Console.ReadLine(); 
+        } 
+            */
+    }  
 }

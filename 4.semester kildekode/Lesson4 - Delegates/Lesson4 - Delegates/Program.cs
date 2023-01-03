@@ -18,6 +18,7 @@ namespace Lesson4___Delegates
 
             Console.WriteLine(name.Lang(17));
 
+
             Console.ReadLine();
 
         }

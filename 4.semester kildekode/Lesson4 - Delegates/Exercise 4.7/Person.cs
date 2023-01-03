@@ -77,10 +77,22 @@ namespace DelegateExercises {
             // Hint:
             // This piece of code
             foreach (var p in people)
-                p.PrintPersonName(PrintFullNameLastNameFirst);
+            {
+				p.PrintPersonName(PrintFullNameLastNameFirst);
+                p.PrintPersonName((s1, s2) => $"{s2} {s1}");
+                p.PrintPersonName((s1, s2) =>
+                {
+                    return $"{s2} {s1}";
 
-            // can be translated to
-            people.ForEach(p => p.PrintFullNameLastNameFirst());
+				});
+
+			}
+
+
+             p
+
+			// can be translated to
+			people.ForEach(p => p.PrintFullNameLastNameFirst());
             // using the ForEach method on List<>. ForEach takes a Lambda as input
 
             //
@@ -102,7 +114,23 @@ namespace DelegateExercises {
             // people.ForEach(p => p.CallDelegate((F, L) => PrintFullNameLastNameFirst(F, L)));
             //            
 
-            while (true) {
+
+
+                        /* ------------------------------------------------------eksempel på at tilføje flere metoder til en delegate. ---------------------------------------------------------
+
+            FormatPersonName format = PrintFullNameLastNameFirst;
+
+            format += GetUpperCaseName;
+            format+= GetShortName;
+
+            format.Invoke("Lars", "Larsen");
+
+            //NB for at se nogeti konsollen så skal metoderne jo printe noget til konsollen for at man kan se output
+
+             */
+
+            
+			while (true) {
                 Console.WriteLine("----------------------------------------------------");
                 Console.WriteLine("Hvordan vil du have udskrevet navnene?");
                 Console.WriteLine("1: Efternavn efterfulgt af fornavn");
@@ -135,6 +163,8 @@ namespace DelegateExercises {
                         Console.WriteLine("Ukendt valg, prøv igen");
                         break;
                 }
+
+            
             }
         }
 

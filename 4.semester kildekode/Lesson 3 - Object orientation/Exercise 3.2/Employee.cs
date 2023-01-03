@@ -19,6 +19,7 @@ namespace Exercise_3._2
             get{ return this._id.ToString(); }
         }
 
+
         public string Name { get; set; }
 
         public Address Address { get; set; }

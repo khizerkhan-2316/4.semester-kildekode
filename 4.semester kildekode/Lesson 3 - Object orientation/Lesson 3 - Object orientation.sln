@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson 3 - Object orientati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise 3.2", "Exercise 3.2\Exercise 3.2.csproj", "{CAD4C296-BCCF-4279-A561-C0C9E1CBE4FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise 3.8", "Exercise 3.8\Exercise 3.8.csproj", "{492C7B93-DCB2-4918-8A05-5B78987C0B4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercise 3.8", "Exercise 3.8\Exercise 3.8.csproj", "{492C7B93-DCB2-4918-8A05-5B78987C0B4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericsExample", "GenericsExample\GenericsExample.csproj", "{14B035D5-921A-441A-94DD-35236725F084}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{492C7B93-DCB2-4918-8A05-5B78987C0B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{492C7B93-DCB2-4918-8A05-5B78987C0B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{492C7B93-DCB2-4918-8A05-5B78987C0B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B035D5-921A-441A-94DD-35236725F084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B035D5-921A-441A-94DD-35236725F084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B035D5-921A-441A-94DD-35236725F084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B035D5-921A-441A-94DD-35236725F084}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
